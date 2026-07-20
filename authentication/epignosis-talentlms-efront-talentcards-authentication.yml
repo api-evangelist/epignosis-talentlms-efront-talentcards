@@ -1,0 +1,44 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json
+docs: https://market.talentlms.com/pages/docs/TalentLMS-API-Documentation.pdf
+summary:
+  types:
+  - http
+  http_schemes:
+  - basic
+  model: >-
+    All three Epignosis products authenticate with a single API key sent over HTTP Basic
+    auth: the API key is the username and the password is left blank. Keys are issued
+    per tenant/installation by a super-administrator and must be sent over HTTPS
+    (TalentLMS rejects plain HTTP from API v4.14+). There is no OAuth, no per-user token,
+    and no scope surface.
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: >-
+    API key supplied as the HTTP Basic auth username with a blank password. Confirmed
+    for eFront (OpenAPI securitySchemes.basicAuth) and documented identically for
+    TalentLMS and TalentCards.
+  sources:
+  - openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json
+products:
+- product: TalentLMS
+  scheme: http-basic-apikey
+  key_location: username
+  password: blank
+  key_management: Account & Settings -> Basic settings (super-admin only)
+  transport: https-required
+  docs: https://market.talentlms.com/pages/docs/TalentLMS-API-Documentation.pdf
+- product: eFront (efrontPRO)
+  scheme: http-basic-apikey
+  key_location: username
+  password: blank
+  key_management: admin -> system settings -> integrations -> API
+  docs: https://app.swaggerhub.com/apis/Epignosis/Efront-API/1.0.0
+- product: TalentCards
+  scheme: http-basic-apikey
+  key_location: username
+  password: blank
+  docs: https://github.com/epignosis/talentcards-api-wrapper
