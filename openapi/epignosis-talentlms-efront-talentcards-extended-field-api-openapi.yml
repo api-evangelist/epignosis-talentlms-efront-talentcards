@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Efront Account Extended Field API
+  description: Efront API Documentation
+servers:
+- url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://ssc.efrontlearning.com/API/v1.0
+security:
+- basicAuth: []
+tags:
+- name: Extended Field
+paths:
+  /extended-fields/users:
+    get:
+      tags:
+      - Extended Field
+      description: Returns a list of extended fields for users.
+      responses:
+        '200':
+          description: A JSON array with the extended fields.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                          key:
+                            type: string
+                            description: The extended field's name in the database.
+                          required:
+                            type: boolean
+                          label:
+                            type: string
+                            description: The name of the extended field that will be shown in the portal.
+                          help_text:
+                            type: string
+                            description: A help text to clarify the purpose of the extended field.
+                          branches_ID:
+                            $ref: '#/components/schemas/nullableId'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+components:
+  responses:
+    errorResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      minimum: 400
+                      default: 400
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: Not possible to get the requested resource information.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+  schemas:
+    nullableId:
+      nullable: true
+      type: integer
+      format: int32
+      minimum: 1
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

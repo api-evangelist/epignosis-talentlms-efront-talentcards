@@ -1,0 +1,802 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Efront Account Course API
+  description: Efront API Documentation
+servers:
+- url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://ssc.efrontlearning.com/API/v1.0
+security:
+- basicAuth: []
+tags:
+- name: Course
+paths:
+  /Course/{Id}:
+    get:
+      tags:
+      - Course
+      description: Returns information about the course with the associated Id.
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: A JSON array with the requested course information.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          $ref: '#/components/schemas/id'
+                        name:
+                          type: string
+                          example: Marketing
+                          description: The course's name.
+                        active:
+                          $ref: '#/components/schemas/booleanInteger'
+                        avatar:
+                          $ref: '#/components/schemas/avatar'
+                        description:
+                          type: string
+                          description: The course's description.
+                        public_id:
+                          $ref: '#/components/schemas/public_id'
+                        categories_ID:
+                          $ref: '#/components/schemas/id'
+                        price:
+                          $ref: '#/components/schemas/price'
+                        course_code:
+                          $ref: '#/components/schemas/nullableId'
+                        show_catalog:
+                          $ref: '#/components/schemas/booleanInteger'
+                        branches_ID:
+                          $ref: '#/components/schemas/nullableId'
+                        access_link:
+                          type: string
+                          description: The path url of the requested course.
+                        lessons:
+                          type: object
+                          properties:
+                            count:
+                              type: integer
+                              description: The total number of lessons that are included in the reuqested course.
+                            list:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    $ref: '#/components/schemas/id'
+                                  name:
+                                    type: string
+                                  active:
+                                    $ref: '#/components/schemas/booleanInteger'
+                                  created:
+                                    $ref: '#/components/schemas/timestampNullable'
+                                  formatted_name:
+                                    type: string
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                    default: lesson
+                                  public_id:
+                                    $ref: '#/components/schemas/public_id'
+                                  access_link:
+                                    type: string
+                                    description: The path url of the lesson.
+                        users:
+                          type: object
+                          properties:
+                            count:
+                              type: integer
+                              description: The total number of users that are included in the requested course.
+                            list:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    $ref: '#/components/schemas/id'
+                                  login:
+                                    $ref: '#/components/schemas/login'
+                                  name:
+                                    $ref: '#/components/schemas/userName'
+                                  surname:
+                                    $ref: '#/components/schemas/surname'
+                                  email:
+                                    $ref: '#/components/schemas/email'
+                                  active:
+                                    $ref: '#/components/schemas/booleanInteger'
+                                  user_types_id:
+                                    $ref: '#/components/schemas/id'
+                                  score:
+                                    $ref: '#/components/schemas/score'
+                                  status:
+                                    type: string
+                                    default: registered
+                                  from_timestamp:
+                                    $ref: '#/components/schemas/timestampNullable'
+                                  to_timestamp:
+                                    $ref: '#/components/schemas/timestampNullable'
+                                  issued_certificate:
+                                    $ref: '#/components/schemas/nullableId'
+                                  branches_ID:
+                                    $ref: '#/components/schemas/nullableId'
+                                  progress:
+                                    type: number
+                                    format: double
+                      additionalProperties:
+                        $ref: '#/components/schemas/extended-fields'
+                - $ref: '#/components/schemas/standardResponse'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+  /Course/{CourseId}/UserProgress/{UserId}:
+    get:
+      tags:
+      - Course
+      description: Returns information about the progress of the specified user in the specified course.
+      parameters:
+      - $ref: '#/components/parameters/CourseId'
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: A JSON array with the requested user progress in the requested course.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      description: Information progress for each unit
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          LessonId:
+                            $ref: '#/components/schemas/id'
+                          LessonPublicId:
+                            $ref: '#/components/schemas/public_id'
+                          LessonName:
+                            type: string
+                          Score:
+                            $ref: '#/components/schemas/score'
+                          Status:
+                            type: string
+                            example: started
+                          Percentage:
+                            type: number
+                            format: double
+                            example: 12.5
+                          TotalTime:
+                            type: integer
+                            description: The total time the user spent in the course so far in seconds.
+                            example: 9386
+                          Attended:
+                            type: integer
+                            nullable: true
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /CourseUserStatus/{CourseId},{UserId}:
+    get:
+      tags:
+      - Course
+      description: Returns information about the status of a specified user in the specified course.
+      parameters:
+      - $ref: '#/components/parameters/CourseId'
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: A JSON array with the requested user progress in the requested course.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        from_timestamp:
+                          $ref: '#/components/schemas/timestampNullable'
+                        to_timestamp:
+                          $ref: '#/components/schemas/timestampNullable'
+                        score:
+                          $ref: '#/components/schemas/score'
+                        status:
+                          type: string
+                          example: in_progress
+                        sessions_ID:
+                          $ref: '#/components/schemas/nullableId'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+    post:
+      tags:
+      - Course
+      summary: Update the status of the specified user in the specified course
+      parameters:
+      - $ref: '#/components/parameters/CourseId'
+      - $ref: '#/components/parameters/UserId'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                score:
+                  $ref: '#/components/schemas/score'
+                status:
+                  type: string
+                  example: in_progress
+                to_timestamp:
+                  $ref: '#/components/schemas/timestampNullable'
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /CourseUserTestAttempts/{CourseId},{UserId}:
+    get:
+      tags:
+      - Course
+      description: Returns a list of all the test attempts that the specified user has made in the specified course.
+      parameters:
+      - $ref: '#/components/parameters/CourseId'
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: A JSON array with the requested user test attempts in the requested course.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          test_name:
+                            type: string
+                          score:
+                            $ref: '#/components/schemas/score'
+                          status:
+                            type: string
+                            example: passed
+                          time_start:
+                            $ref: '#/components/schemas/timestampNullable'
+                          time_end:
+                            $ref: '#/components/schemas/timestampNullable'
+                          time_spent:
+                            type: integer
+                            description: The total time the user spent in the course so far in seconds.
+                            example: 600
+                          correction_pending:
+                            $ref: '#/components/schemas/booleanInteger'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Courses:
+    get:
+      tags:
+      - Course
+      description: Returns the complete list of courses.
+      responses:
+        '200':
+          description: A JSON array with the courses list.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          active:
+                            $ref: '#/components/schemas/booleanInteger'
+                          avatars_ID:
+                            $ref: '#/components/schemas/id'
+                          branches_ID:
+                            $ref: '#/components/schemas/id'
+                          categories_ID:
+                            $ref: '#/components/schemas/id'
+                          course_code:
+                            type: string
+                            nullable: true
+                            example: CS12
+                          course_type:
+                            type: string
+                            example: elearning
+                          description:
+                            type: string
+                            example: Google AdWords is an online advertising service.
+                          id:
+                            $ref: '#/components/schemas/id'
+                          name:
+                            type: string
+                            example: Google AdWords
+                          price:
+                            $ref: '#/components/schemas/price'
+                          public_id:
+                            $ref: '#/components/schemas/id'
+                          show_catalog:
+                            $ref: '#/components/schemas/booleanInteger'
+                          avatar:
+                            $ref: '#/components/schemas/avatar'
+                          access_link:
+                            type: string
+                            description: The path url of the course.
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Course/{Id}/Content:
+    get:
+      tags:
+      - Course
+      description: Returns the content IDs for a given course.
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: A JSON array with the requested course's content IDs.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        courses_id:
+                          $ref: '#/components/schemas/id'
+                        total_content:
+                          type: integer
+                          format: int32
+                          minimum: 0
+                          example: 8
+                        list:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              active:
+                                $ref: '#/components/schemas/booleanInteger'
+                              id:
+                                $ref: '#/components/schemas/id'
+                              lessons_ID:
+                                $ref: '#/components/schemas/id'
+                              name:
+                                type: string
+                                example: Content test
+                              options:
+                                type: string
+                                example: a:1:{s:10:\"completion\";i:4;}
+                                description: The serialised content's options.
+                              parent_ID:
+                                $ref: '#/components/schemas/nullableId'
+                              previous_ID:
+                                $ref: '#/components/schemas/nullableId'
+                              public_id:
+                                $ref: '#/components/schemas/public_id'
+                              timestamp:
+                                $ref: '#/components/schemas/timestampNotNullable'
+                              type:
+                                type: string
+                                example: test
+                - $ref: '#/components/schemas/standardResponse'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+  /Course:
+    post:
+      tags:
+      - Course
+      summary: Create course
+      description: Creates a course with the requested attributes.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/createCourse'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createCourse'
+      responses:
+        '200':
+          description: A JSON array with the newly created course.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    CourseId:
+                      $ref: '#/components/schemas/id'
+                    PublicId:
+                      $ref: '#/components/schemas/public_id'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /CourseUserStatus:
+    post:
+      tags:
+      - Course
+      summary: Update the status of the specified user in the specified course.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/updateCourseUserStatus'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateCourseUserStatus'
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Course/AddUser:
+    post:
+      tags:
+      - Course
+      summary: Adds a user to a course
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                CourseId:
+                  $ref: '#/components/schemas/id'
+                UserId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - CourseId
+              - UserId
+          application/json:
+            schema:
+              type: object
+              properties:
+                courseId:
+                  $ref: '#/components/schemas/id'
+                userId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - courseId
+              - userId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Course/{Id}/AddUser:
+    put:
+      tags:
+      - Course
+      description: 'Adds a user to the specified course.
+
+
+        - The Id in the URL, refers to the course.
+
+
+        - The Id of the user is defined as a PUT field, in the request body.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  $ref: '#/components/schemas/id'
+                Force:
+                  type: boolean
+              required:
+              - UserId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Course/{Id}/RemoveUser:
+    put:
+      tags:
+      - Course
+      description: 'Removes a user from the specified course.
+
+
+        - The Id in the URL, refers to the course.
+
+
+        - The Id of the user is defined as a PUT field, in the request body.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  $ref: '#/components/schemas/id'
+                Force:
+                  type: boolean
+              required:
+              - UserId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+components:
+  schemas:
+    updateCourseUserStatus:
+      type: object
+      properties:
+        courseId:
+          $ref: '#/components/schemas/id'
+        userId:
+          $ref: '#/components/schemas/id'
+        score:
+          $ref: '#/components/schemas/score'
+        status:
+          type: string
+          example: in_progress
+        to_timestamp:
+          $ref: '#/components/schemas/timestampNullable'
+      required:
+      - courseId
+      - userId
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    timestampNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+      nullable: true
+    timestampNotNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+      nullable: false
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    score:
+      type: number
+      format: double
+      nullable: true
+      example: 62.5
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
+      nullable: true
+    surname:
+      type: string
+      example: Doe
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    nullableId:
+      nullable: true
+      type: integer
+      format: int32
+      minimum: 1
+    userName:
+      type: string
+      example: John
+    login:
+      type: string
+      description: The login username
+      example: johndoe
+    avatar:
+      type: object
+      properties:
+        small:
+          type: string
+          description: The path url of the small size avatar.
+        medium:
+          type: string
+          description: The path url of the medium size avatar.
+        large:
+          type: string
+          description: The path url of the large size avatar.
+      nullable: true
+    price:
+      type: number
+      format: double
+      nullable: true
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    createCourse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the course to be created.
+          example: New Course 1
+        category_id:
+          $ref: '#/components/schemas/id'
+        description:
+          type: string
+        course_type:
+          type: string
+        course_code:
+          type: string
+        start_date:
+          $ref: '#/components/schemas/timestampNullable'
+        end_date:
+          $ref: '#/components/schemas/timestampNullable'
+        duration:
+          type: integer
+          minimum: 1
+          description: The number of days that the course will be available.
+      required:
+      - name
+      - category_id
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+  responses:
+    errorResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      minimum: 400
+                      default: 400
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: Not possible to get the requested resource information.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    CourseId:
+      name: CourseId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    UserId:
+      name: UserId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

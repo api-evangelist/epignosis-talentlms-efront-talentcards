@@ -1,0 +1,107 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Efront Account System API
+  description: Efront API Documentation
+servers:
+- url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://ssc.efrontlearning.com/API/v1.0
+security:
+- basicAuth: []
+tags:
+- name: System
+paths:
+  /System/Info:
+    get:
+      tags:
+      - System
+      description: Returns information about the system.
+      responses:
+        '200':
+          description: A JSON array with the requested system's information.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        users:
+                          $ref: '#/components/schemas/resourceInfo'
+                        courses:
+                          $ref: '#/components/schemas/resourceInfo'
+                        categories:
+                          $ref: '#/components/schemas/resourceInfo'
+                        groups:
+                          $ref: '#/components/schemas/resourceInfo'
+                        branches:
+                          type: integer
+                          description: The total number of branches in the system.
+                          minimum: 0
+                          example: 2
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+components:
+  schemas:
+    resourceInfo:
+      type: object
+      properties:
+        active:
+          type: integer
+          description: The total number of the requested resource that are active in the system.
+          minimum: 0
+          example: 15
+        inactive:
+          type: integer
+          description: The total number of the requested resource that are inactive in the system.
+          minimum: 0
+          example: 3
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+  responses:
+    errorResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      minimum: 400
+                      default: 400
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: Not possible to get the requested resource information.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

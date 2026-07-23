@@ -1,0 +1,109 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Efront Account API
+  description: Efront API Documentation
+servers:
+- url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://ssc.efrontlearning.com/API/v1.0
+security:
+- basicAuth: []
+tags:
+- name: Account
+paths:
+  /Account/Status:
+    post:
+      tags:
+      - Account
+      summary: Checks if the specified account exists and returns the user id
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                login:
+                  $ref: '#/components/schemas/login'
+                password:
+                  type: string
+                  format: password
+              required:
+              - login
+              - password
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    found:
+                      type: boolean
+                      enum:
+                      - true
+                      - false
+                    UserId:
+                      $ref: '#/components/schemas/id'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+components:
+  responses:
+    errorResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      minimum: 400
+                      default: 400
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: Not possible to get the requested resource information.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+  schemas:
+    login:
+      type: string
+      description: The login username
+      example: johndoe
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

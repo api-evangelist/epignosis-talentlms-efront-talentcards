@@ -1,0 +1,389 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Efront Account Branch API
+  description: Efront API Documentation
+servers:
+- url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://ssc.efrontlearning.com/API/v1.0
+security:
+- basicAuth: []
+tags:
+- name: Branch
+paths:
+  /Branch/{Id}:
+    get:
+      tags:
+      - Branch
+      description: Returns information about the branch with the associated Id.
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: A JSON array with the requested branch information.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          $ref: '#/components/schemas/id'
+                        name:
+                          type: string
+                          description: The name of the reuqested branch.
+                        public_id:
+                          $ref: '#/components/schemas/public_id'
+                        parent_ID:
+                          $ref: '#/components/schemas/id'
+                        courses:
+                          $ref: '#/components/schemas/coursesList'
+                        users:
+                          type: object
+                          properties:
+                            count:
+                              type: integer
+                              minimum: 0
+                              description: The number of the users included in the requested resource.
+                            list:
+                              type: array
+                              description: An array with information for each user included in the resource.
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    $ref: '#/components/schemas/id'
+                                  login:
+                                    $ref: '#/components/schemas/login'
+                                  name:
+                                    $ref: '#/components/schemas/userName'
+                                  surname:
+                                    $ref: '#/components/schemas/surname'
+                                  email:
+                                    $ref: '#/components/schemas/email'
+                                  active:
+                                    $ref: '#/components/schemas/booleanInteger'
+                                  user_types_id:
+                                    $ref: '#/components/schemas/id'
+                                  has_branch:
+                                    $ref: '#/components/schemas/id'
+                - $ref: '#/components/schemas/standardResponse'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+  /Branches:
+    get:
+      tags:
+      - Branch
+      description: Returns the branch list.
+      responses:
+        '200':
+          description: A JSON array with the branches list.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            $ref: '#/components/schemas/id'
+                          name:
+                            type: string
+                            example: branch 1
+                          public_id:
+                            $ref: '#/components/schemas/public_id'
+                          url:
+                            type: string
+                            example: branch1
+                          parent_ID:
+                            $ref: '#/components/schemas/nullableId'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Branch:
+    post:
+      tags:
+      - Branch
+      summary: Create branch
+      description: Creates a branch with the requested attributes.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/createBranch'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createBranch'
+      responses:
+        '200':
+          description: A JSON array with the newly created branch id.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    branchId:
+                      type: integer
+                      format: int32
+                      minimum: 1
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Branch/AddUser:
+    post:
+      tags:
+      - Branch
+      summary: Adds a user to a branch
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                BranchId:
+                  $ref: '#/components/schemas/id'
+                UserId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - BranchId
+              - UserId
+          application/json:
+            schema:
+              type: object
+              properties:
+                branchId:
+                  $ref: '#/components/schemas/id'
+                userId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - branchId
+              - userId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Branch/{Id}/AddUser:
+    put:
+      tags:
+      - Branch
+      description: 'Adds a user to the specified branch.
+
+
+        - The Id in the URL, refers to the branch.
+
+
+        - The Id of the user is defined as a PUT field, in the request body.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - UserId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+components:
+  schemas:
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    surname:
+      type: string
+      example: Doe
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    nullableId:
+      nullable: true
+      type: integer
+      format: int32
+      minimum: 1
+    userName:
+      type: string
+      example: John
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    createBranch:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+        parent_ID:
+          $ref: '#/components/schemas/id'
+        public_ID:
+          type: string
+          format: byte
+        registered_user_limit:
+          type: integer
+          minimum: 0
+        concurrent_user_limit:
+          type: integer
+          minimum: 0
+        approve_users:
+          $ref: '#/components/schemas/booleanInteger'
+        balance_courses:
+          $ref: '#/components/schemas/booleanInteger'
+        concurrent_users_limit_recipients:
+          type: string
+          description: A comma separated string with the recipient emails of the concurrent_user_limit notification.
+          example: johndoe@example.com,adamsmith@example.com
+      required:
+      - name
+    timestampNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+      nullable: true
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+    login:
+      type: string
+      description: The login username
+      example: johndoe
+    coursesList:
+      type: object
+      properties:
+        count:
+          type: integer
+          minimum: 0
+          description: The total number of the courses included in the requested resource.
+        list:
+          type: array
+          description: An array with information for each course included in the branch.
+          items:
+            type: object
+            properties:
+              courses_ID:
+                $ref: '#/components/schemas/id'
+              name:
+                type: string
+                description: The name of the course.
+              created:
+                $ref: '#/components/schemas/timestampNullable'
+              description:
+                type: string
+                description: The description of the course.
+  responses:
+    errorResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      minimum: 400
+                      default: 400
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: Not possible to get the requested resource information.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,291 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Efront Account Curriculum API
+  description: Efront API Documentation
+servers:
+- url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://ssc.efrontlearning.com/API/v1.0
+security:
+- basicAuth: []
+tags:
+- name: Curriculum
+paths:
+  /curriculums:
+    get:
+      tags:
+      - Curriculum
+      description: Returns a list of the available curriculums.
+      responses:
+        '200':
+          description: A JSON array with the curriculums list.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          active:
+                            $ref: '#/components/schemas/booleanInteger'
+                          assign_new_users:
+                            $ref: '#/components/schemas/booleanInteger'
+                          avatar:
+                            type: object
+                            nullable: true
+                            properties:
+                              id:
+                                $ref: '#/components/schemas/id'
+                          branches:
+                            nullable: true
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  $ref: '#/components/schemas/id'
+                                formatted_name:
+                                  type: string
+                                  example: Sub-Branch 1
+                                name:
+                                  type: string
+                                  example: branch 1
+                                public_id:
+                                  $ref: '#/components/schemas/public_id'
+                          branches_ID:
+                            $ref: '#/components/schemas/nullableId'
+                          category:
+                            type: object
+                            properties:
+                              id:
+                                $ref: '#/components/schemas/id'
+                              name:
+                                type: string
+                                example: Uncategorized
+                          certificate:
+                            type: object
+                            properties:
+                              id:
+                                $ref: '#/components/schemas/id'
+                              name:
+                                type: string
+                                example: Default template
+                          courses:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  $ref: '#/components/schemas/id'
+                                course_code:
+                                  type: string
+                                  nullable: true
+                                  example: CS12
+                                public_id:
+                                  $ref: '#/components/schemas/public_id'
+                                formatted_name:
+                                  type: string
+                                  example: New curriculum
+                          created:
+                            $ref: '#/components/schemas/timestampNullable'
+                          description:
+                            type: object
+                            properties:
+                              html:
+                                type: string
+                              plain_text:
+                                type: string
+                          exclude_progress:
+                            $ref: '#/components/schemas/booleanInteger'
+                          formatted_name:
+                            type: string
+                            example: Curriculum 1
+                          id:
+                            $ref: '#/components/schemas/id'
+                          name:
+                            type: string
+                            example: Curriculum 1
+                          participation:
+                            type: integer
+                            minimum: 0
+                            example: 5
+                          price:
+                            $ref: '#/components/schemas/price'
+                          program:
+                            type: integer
+                          public_id:
+                            $ref: '#/components/schemas/public_id'
+                          reset_interval:
+                            nullable: true
+                          show_catalog:
+                            $ref: '#/components/schemas/booleanInteger'
+                          show_main:
+                            $ref: '#/components/schemas/booleanInteger'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Curriculum/{Id}/AddUser:
+    put:
+      tags:
+      - Curriculum
+      description: 'Adds a user to the specified curriculum.
+
+
+        - The Id in the URL, refers to the curriculum.
+
+
+        - The Id of the user is defined as a PUT field, in the request body.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - UserId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Curriculum/{Id}/RemoveUser:
+    put:
+      tags:
+      - Curriculum
+      description: 'Removes a user from the specified curriculum.
+
+
+        - The Id in the URL, refers to the curriculum.
+
+
+        - The Id of the user is defined as a PUT field, in the request body.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - UserId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+components:
+  responses:
+    errorResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      minimum: 400
+                      default: 400
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: Not possible to get the requested resource information.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+  schemas:
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    price:
+      type: number
+      format: double
+      nullable: true
+    nullableId:
+      nullable: true
+      type: integer
+      format: int32
+      minimum: 1
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    timestampNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+      nullable: true
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

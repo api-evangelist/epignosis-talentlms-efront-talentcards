@@ -1,0 +1,206 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Efront Account Catalog API
+  description: Efront API Documentation
+servers:
+- url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://ssc.efrontlearning.com/API/v1.0
+security:
+- basicAuth: []
+tags:
+- name: Catalog
+paths:
+  /User/{Id}/Catalog/:
+    get:
+      tags:
+      - Catalog
+      description: Returns the course catalog list for a given user.
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: A JSON array with the requested user's catalog.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            $ref: '#/components/schemas/id'
+                          name:
+                            type: string
+                          can_edit:
+                            type: boolean
+                          formatted_name:
+                            type: string
+                          price:
+                            $ref: '#/components/schemas/price'
+                          cancellation_fee:
+                            $ref: '#/components/schemas/price'
+                          track_price:
+                            $ref: '#/components/schemas/booleanInteger'
+                          description:
+                            type: string
+                            description: Full description including html attributes
+                          categories_ID:
+                            $ref: '#/components/schemas/id'
+                          category_name:
+                            type: string
+                          avatar:
+                            $ref: '#/components/schemas/avatar'
+                          price_string:
+                            type: string
+                            example: <span class = "normalPrice">&euro;0 </span>
+                          type:
+                            type: string
+                            example: course
+                          course_type:
+                            type: string
+                            example: ilt
+                          public_id:
+                            $ref: '#/components/schemas/public_id'
+                          has_dependency:
+                            type: boolean
+                          has_course:
+                            type: boolean
+                          has_curriculum:
+                            type: boolean
+                          last_update_on:
+                            $ref: '#/components/schemas/timestampNullable'
+                          mean_rate:
+                            type: number
+                            format: float
+                            minimum: 1
+                            maximum: 5
+                            nullable: true
+                          tags:
+                            type: object
+                            properties:
+                              ascendingNumber:
+                                type: string
+                                description: The name of each tag.
+                            nullable: true
+                        additionalProperties:
+                          $ref: '#/components/schemas/extended-fields'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+components:
+  responses:
+    errorResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      minimum: 400
+                      default: 400
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: Not possible to get the requested resource information.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+  schemas:
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    price:
+      type: number
+      format: double
+      nullable: true
+    avatar:
+      type: object
+      properties:
+        small:
+          type: string
+          description: The path url of the small size avatar.
+        medium:
+          type: string
+          description: The path url of the medium size avatar.
+        large:
+          type: string
+          description: The path url of the large size avatar.
+      nullable: true
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    timestampNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+      nullable: true
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
+      nullable: true
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

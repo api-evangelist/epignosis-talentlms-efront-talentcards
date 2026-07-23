@@ -1,0 +1,390 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Efront Account Group API
+  description: Efront API Documentation
+servers:
+- url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://ssc.efrontlearning.com/API/v1.0
+security:
+- basicAuth: []
+tags:
+- name: Group
+paths:
+  /Group/{Id}:
+    get:
+      tags:
+      - Group
+      description: Returns information about the group with the associated Id.
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: A JSON array with the requested group's info.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          $ref: '#/components/schemas/id'
+                        name:
+                          type: string
+                          example: Group 1
+                        description:
+                          type: string
+                        courses:
+                          $ref: '#/components/schemas/coursesList'
+                        users:
+                          $ref: '#/components/schemas/usersList'
+                - $ref: '#/components/schemas/standardResponse'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+  /Groups:
+    get:
+      tags:
+      - Group
+      description: Returns the entire group list.
+      responses:
+        '200':
+          description: A JSON array with the entire group list.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            $ref: '#/components/schemas/id'
+                          name:
+                            type: string
+                          branches_ID:
+                            $ref: '#/components/schemas/nullableId'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Group/AddUser:
+    post:
+      tags:
+      - Group
+      summary: Adds a user to a group
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                GroupId:
+                  $ref: '#/components/schemas/id'
+                UserId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - GroupId
+              - UserId
+          application/json:
+            schema:
+              type: object
+              properties:
+                groupId:
+                  $ref: '#/components/schemas/id'
+                userId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - groupId
+              - userId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Group/{Id}/AddUser:
+    put:
+      tags:
+      - Group
+      description: 'Adds a user to the specified group.
+
+
+        - The Id in the URL, refers to the group.
+
+
+        - The Id of the user is defined as a PUT field, in the request body.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - UserId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Group/{Id}/RemoveUser:
+    put:
+      tags:
+      - Group
+      description: 'Removes a user from the specified group.
+
+
+        - The Id in the URL, refers to the group.
+
+
+        - The Id of the user is defined as a PUT field, in the request body.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - UserId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Job/{Id}/RemoveUser:
+    put:
+      tags:
+      - Group
+      description: 'Removes a user from the specified job.
+
+
+        - The Id in the URL, refers to the job.
+
+
+        - The Id of the user is defined as a PUT field, in the request body.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - UserId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+components:
+  schemas:
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    surname:
+      type: string
+      example: Doe
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    nullableId:
+      nullable: true
+      type: integer
+      format: int32
+      minimum: 1
+    userName:
+      type: string
+      example: John
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    usersList:
+      type: object
+      properties:
+        count:
+          type: integer
+          minimum: 0
+          description: The number of the users included in the requested resource.
+        list:
+          type: array
+          description: An array with information for each user included in the resource.
+          items:
+            type: object
+            properties:
+              id:
+                $ref: '#/components/schemas/id'
+              login:
+                $ref: '#/components/schemas/login'
+              name:
+                $ref: '#/components/schemas/userName'
+              surname:
+                $ref: '#/components/schemas/surname'
+              email:
+                $ref: '#/components/schemas/email'
+              active:
+                $ref: '#/components/schemas/booleanInteger'
+              user_types_id:
+                $ref: '#/components/schemas/id'
+              branches_ID:
+                $ref: '#/components/schemas/id'
+    timestampNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+      nullable: true
+    login:
+      type: string
+      description: The login username
+      example: johndoe
+    coursesList:
+      type: object
+      properties:
+        count:
+          type: integer
+          minimum: 0
+          description: The total number of the courses included in the requested resource.
+        list:
+          type: array
+          description: An array with information for each course included in the branch.
+          items:
+            type: object
+            properties:
+              courses_ID:
+                $ref: '#/components/schemas/id'
+              name:
+                type: string
+                description: The name of the course.
+              created:
+                $ref: '#/components/schemas/timestampNullable'
+              description:
+                type: string
+                description: The description of the course.
+  responses:
+    errorResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      minimum: 400
+                      default: 400
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: Not possible to get the requested resource information.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

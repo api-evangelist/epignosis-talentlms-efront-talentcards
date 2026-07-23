@@ -1,0 +1,445 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Efront Account Job API
+  description: Efront API Documentation
+servers:
+- url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://ssc.efrontlearning.com/API/v1.0
+security:
+- basicAuth: []
+tags:
+- name: Job
+paths:
+  /Job/{Id}:
+    get:
+      tags:
+      - Job
+      description: Returns information for a given job.
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: A JSON array with the requested user's catalog.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          $ref: '#/components/schemas/id'
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        public_id:
+                          $ref: '#/components/schemas/public_id'
+                        courses:
+                          $ref: '#/components/schemas/coursesList'
+                        users:
+                          $ref: '#/components/schemas/usersList'
+                - $ref: '#/components/schemas/standardResponse'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+    put:
+      tags:
+      - Job
+      description: 'Edits the specified job.
+
+
+        - The Id in the URL, refers to the job.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/editJob'
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    JobId:
+                      $ref: '#/components/schemas/id'
+                    PublicId:
+                      $ref: '#/components/schemas/public_id'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Jobs:
+    get:
+      tags:
+      - Job
+      description: Returns the entire list of jobs.
+      responses:
+        '200':
+          description: A JSON array with the entire list of jobs.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            $ref: '#/components/schemas/id'
+                          name:
+                            type: string
+                          branches_ID:
+                            $ref: '#/components/schemas/nullableId'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /User/{Id}/Jobs:
+    get:
+      tags:
+      - Job
+      description: Returns information about user jobs.
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: A JSON array of the specific user jobs.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            $ref: '#/components/schemas/id'
+                          name:
+                            type: string
+                            example: Job Name Example
+                          branches_ID:
+                            $ref: '#/components/schemas/nullableId'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Job/AddUser:
+    post:
+      tags:
+      - Job
+      summary: Adds a user to a job
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                JobId:
+                  $ref: '#/components/schemas/id'
+                UserId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - JobId
+              - UserId
+          application/json:
+            schema:
+              type: object
+              properties:
+                jobId:
+                  $ref: '#/components/schemas/id'
+                userId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - jobId
+              - userId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Job:
+    post:
+      tags:
+      - Job
+      summary: Create a job
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/createJob'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createJob'
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    JobId:
+                      $ref: '#/components/schemas/id'
+                    PublicId:
+                      $ref: '#/components/schemas/public_id'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /Job/{Id}/AddUser:
+    put:
+      tags:
+      - Job
+      description: 'Adds a user to the specified job.
+
+
+        - The Id in the URL, refers to the job.
+
+
+        - The Id of the user is defined as a PUT field, in the request body.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                UserId:
+                  $ref: '#/components/schemas/id'
+              required:
+              - UserId
+      responses:
+        '200':
+          description: A json array indicating a successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+components:
+  schemas:
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    surname:
+      type: string
+      example: Doe
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    nullableId:
+      nullable: true
+      type: integer
+      format: int32
+      minimum: 1
+    userName:
+      type: string
+      example: John
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    usersList:
+      type: object
+      properties:
+        count:
+          type: integer
+          minimum: 0
+          description: The number of the users included in the requested resource.
+        list:
+          type: array
+          description: An array with information for each user included in the resource.
+          items:
+            type: object
+            properties:
+              id:
+                $ref: '#/components/schemas/id'
+              login:
+                $ref: '#/components/schemas/login'
+              name:
+                $ref: '#/components/schemas/userName'
+              surname:
+                $ref: '#/components/schemas/surname'
+              email:
+                $ref: '#/components/schemas/email'
+              active:
+                $ref: '#/components/schemas/booleanInteger'
+              user_types_id:
+                $ref: '#/components/schemas/id'
+              branches_ID:
+                $ref: '#/components/schemas/id'
+    timestampNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+      nullable: true
+    createJob:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        job_code:
+          type: string
+        positions:
+          type: integer
+          minimum: 1
+      required:
+      - name
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+    login:
+      type: string
+      description: The login username
+      example: johndoe
+    coursesList:
+      type: object
+      properties:
+        count:
+          type: integer
+          minimum: 0
+          description: The total number of the courses included in the requested resource.
+        list:
+          type: array
+          description: An array with information for each course included in the branch.
+          items:
+            type: object
+            properties:
+              courses_ID:
+                $ref: '#/components/schemas/id'
+              name:
+                type: string
+                description: The name of the course.
+              created:
+                $ref: '#/components/schemas/timestampNullable'
+              description:
+                type: string
+                description: The description of the course.
+    editJob:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        job_code:
+          type: string
+        positions:
+          type: integer
+          minimum: 1
+  responses:
+    errorResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      minimum: 400
+                      default: 400
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: Not possible to get the requested resource information.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

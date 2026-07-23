@@ -1,0 +1,283 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Efront Account Training Session API
+  description: Efront API Documentation
+servers:
+- url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://ssc.efrontlearning.com/API/v1.0
+security:
+- basicAuth: []
+tags:
+- name: Training Session
+paths:
+  /training-sessions:
+    get:
+      tags:
+      - Training Session
+      description: Represents a list of training sessions.
+      responses:
+        '200':
+          description: A JSON array of training sessions.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            $ref: '#/components/schemas/id'
+                          name:
+                            type: string
+                            example: session 1
+                          start_date:
+                            $ref: '#/components/schemas/timestampNullable'
+                          end_date:
+                            $ref: '#/components/schemas/timestampNullable'
+                          max_users:
+                            type: integer
+                            minimum: 0
+                          free_seats:
+                            type: integer
+                            minimum: 0
+                          location_name:
+                            type: string
+                          status:
+                            type: integer
+                            example: 2
+                            description: The status of the training session (started, finished...).
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /training-session/{id}:
+    get:
+      tags:
+      - Training Session
+      description: Represents a training session.
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: A JSON array of a training session.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        id:
+                          $ref: '#/components/schemas/id'
+                        name:
+                          type: string
+                          example: session 1
+                        start_date:
+                          $ref: '#/components/schemas/timestampNullable'
+                        end_date:
+                          $ref: '#/components/schemas/timestampNullable'
+                        max_users:
+                          type: integer
+                          minimum: 0
+                        free_seats:
+                          type: integer
+                          minimum: 0
+                        location_name:
+                          type: string
+                        status:
+                          type: integer
+                          example: 2
+                          description: The status of the training session (started, finished...).
+                      additionalProperties:
+                        $ref: '#/components/schemas/extended-fields'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /course/{id}/training-sessions:
+    get:
+      tags:
+      - Training Session
+      description: Represents a list of training sessions of the requested course.
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: A JSON array of training sessions of the requested course.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            $ref: '#/components/schemas/id'
+                          name:
+                            type: string
+                            example: session 1
+                          start_date:
+                            $ref: '#/components/schemas/timestampNullable'
+                          end_date:
+                            $ref: '#/components/schemas/timestampNullable'
+                          max_users:
+                            type: integer
+                            minimum: 0
+                          free_seats:
+                            type: integer
+                            minimum: 0
+                          location_name:
+                            type: string
+                          status:
+                            type: integer
+                            example: 2
+                            description: The status of the training session (started, finished...).
+                        additionalProperties:
+                          $ref: '#/components/schemas/extended-fields'
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+  /training-session/{id}/users:
+    get:
+      tags:
+      - Training Session
+      description: Represents a list of users of the requested training session.
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: A JSON array of users of the requested training session.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            $ref: '#/components/schemas/id'
+                          login:
+                            $ref: '#/components/schemas/login'
+                          email:
+                            $ref: '#/components/schemas/email'
+                          name:
+                            $ref: '#/components/schemas/userName'
+                          surname:
+                            $ref: '#/components/schemas/surname'
+                          formatted_name:
+                            type: string
+                            example: Doe
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+components:
+  schemas:
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    surname:
+      type: string
+      example: Doe
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    userName:
+      type: string
+      example: John
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    timestampNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+      nullable: true
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
+      nullable: true
+    login:
+      type: string
+      description: The login username
+      example: johndoe
+  responses:
+    errorResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      minimum: 400
+                      default: 400
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: Not possible to get the requested resource information.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

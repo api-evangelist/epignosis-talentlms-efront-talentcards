@@ -1,0 +1,145 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Efront Account Content API
+  description: Efront API Documentation
+servers:
+- url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: https://ssc.efrontlearning.com/API/v1.0
+security:
+- basicAuth: []
+tags:
+- name: Content
+paths:
+  /Content/{id}:
+    get:
+      tags:
+      - Content
+      description: Returns information about the content with the associated Id.
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: A JSON array with the requested content's information.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        active:
+                          $ref: '#/components/schemas/booleanInteger'
+                        id:
+                          $ref: '#/components/schemas/id'
+                        lessons_ID:
+                          $ref: '#/components/schemas/id'
+                        name:
+                          type: string
+                        options:
+                          type: string
+                          example: a:1:{s:10:\"completion\";i:4;}
+                          description: The serialised content's options.
+                        parent_ID:
+                          $ref: '#/components/schemas/nullableId'
+                        previous_ID:
+                          $ref: '#/components/schemas/nullableId'
+                        public_id:
+                          $ref: '#/components/schemas/public_id'
+                        timestamp:
+                          $ref: '#/components/schemas/timestampNotNullable'
+                        type:
+                          type: string
+                          example: text
+                - $ref: '#/components/schemas/standardResponse'
+        '400':
+          $ref: '#/components/responses/errorResponse'
+components:
+  responses:
+    errorResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      minimum: 400
+                      default: 400
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: Not possible to get the requested resource information.
+                    reason:
+                      type: string
+                      nullable: true
+            - $ref: '#/components/schemas/standardResponse'
+  schemas:
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    nullableId:
+      nullable: true
+      type: integer
+      format: int32
+      minimum: 1
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+    timestampNotNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+      nullable: false
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
