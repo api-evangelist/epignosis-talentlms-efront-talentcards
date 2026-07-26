@@ -1,0 +1,33 @@
+generated: '2026-07-19'
+method: searched
+source: https://market.talentlms.com/pages/docs/TalentLMS-API-Documentation.pdf
+api: TalentLMS API
+format: json
+envelope:
+  description: >-
+    All errors return JSON with a `type` (invalid_request_error or api_error) and a
+    `message` describing the error. HTTP status codes indicate success (2xx) or failure
+    (4xx client / 5xx server). From API v4.14 plain HTTP requests are rejected.
+  fields:
+  - type
+  - message
+error_types:
+- invalid_request_error
+- api_error
+problems:
+- status: 200
+  title: Request executed properly
+- status: 400
+  title: Bad request
+  detail: A required parameter is missing or an invalid type (e.g. a string) was supplied instead of an integer.
+- status: 401
+  title: Invalid API key provided
+- status: 403
+  title: API not enabled for domain
+  detail: API is not enabled for the specified domain or the domain is currently inactive.
+- status: 404
+  title: Resource not found
+  detail: The requested resource (e.g. user) does not exist.
+- status: 500
+  title: Internal server error
+  detail: An internal TalentLMS error.

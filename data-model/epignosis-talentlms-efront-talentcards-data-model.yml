@@ -1,0 +1,60 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json
+api: eFront API
+entities:
+- Account
+- Autologin
+- Branch
+- Catalog
+- Category
+- Content
+- Course
+- Curriculum
+- Extended Field
+- Group
+- Job
+- Plugin
+- System
+- Training Session
+- User
+- User Type
+relationships:
+- from: Course
+  to: User
+  kind: has_many
+  via: enrollment
+- from: Branch
+  to: User
+  kind: has_many
+  via: membership
+- from: Group
+  to: User
+  kind: has_many
+  via: membership
+- from: Job
+  to: User
+  kind: has_many
+  via: assignment
+- from: Curriculum
+  to: User
+  kind: has_many
+  via: assignment
+- from: Category
+  to: Course
+  kind: has_many
+  via: category
+- from: Course
+  to: Content
+  kind: has_many
+  via: content
+- from: Course
+  to: TrainingSession
+  kind: has_many
+  via: session
+- from: User
+  to: Job
+  kind: has_many
+  via: job
+note: Entities derived from OpenAPI tags; relationships inferred from path structure (e.g. /Course/{Id}/AddUser,
+  /Category leafs). eFront schemas have no id-prefix domains published.

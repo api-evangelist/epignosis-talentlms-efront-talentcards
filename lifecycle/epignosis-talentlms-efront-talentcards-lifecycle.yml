@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.talentlms.com/security
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: >-
+    TalentLMS and eFront both carry the version in the path (/v1/, /API/v1.0/). The
+    TalentLMS API documentation is published at revision Version 7.0.
+deprecation:
+  policy_url: null
+  detail: >-
+    No formal API deprecation / Sunset-header policy is published. Note the eFront
+    efrontPRO PHP SDK is deprecated in favor of the SwaggerHub OpenAPI, but this is a
+    library retirement, not an API deprecation policy.
+sla:
+  url: https://www.talentlms.com/SLA
+  uptime_target: '99.9%'
+  detail: >-
+    99.9% uptime SLA target with Multi-Availability-Zone AWS deployments; 24/7 alerting
+    and incident response.
+status_page: https://status.talentlms.com
+deprecated_operations: []

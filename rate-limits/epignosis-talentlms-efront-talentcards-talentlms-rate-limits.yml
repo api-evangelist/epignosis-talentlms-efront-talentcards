@@ -1,0 +1,33 @@
+generated: '2026-07-19'
+method: searched
+source: https://market.talentlms.com/pages/docs/TalentLMS-API-Documentation.pdf
+api: TalentLMS API
+description: >-
+  TalentLMS rate limits are the maximum number of API requests permitted per hour and
+  depend on the subscription plan. Regardless of the hourly allowance, no customer may
+  exceed 200 API calls per 5 seconds. Current limits can be read at runtime from the
+  /v1/ratelimit endpoint.
+window: hourly
+global_burst:
+  limit_count: 200
+  window_seconds: 5
+  scope: per-customer
+runtime_endpoint: /v1/ratelimit
+plans:
+- plan: Core
+  limit_count: 2000
+- plan: Starter
+  limit_count: 2000
+- plan: Basic
+  limit_count: 2000
+- plan: Grow
+  limit_count: 10000
+- plan: Pro
+  limit_count: 10000
+- plan: Plus
+  limit_count: 10000
+- plan: Premium
+  limit_count: 10000
+- plan: Custom
+  limit_count: null
+  note: Contact TalentLMS to create a plan that fits your needs.

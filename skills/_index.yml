@@ -1,0 +1,21 @@
+generated: '2026-07-19'
+method: generated
+note: >-
+  Skills are grounded in the eFront OpenAPI. That spec defines no operationIds, so each
+  step references the verified HTTP method + path (grepped from the spec) rather than an
+  operationId.
+skills:
+- file: epignosis-talentlms-efront-talentcards-onboard-user.md
+  name: Onboard a user to eFront
+  api: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json
+  operations:
+  - POST /User
+  - PUT /Branch/{Id}/AddUser
+  - PUT /User/{Id}/Activate
+- file: epignosis-talentlms-efront-talentcards-enroll-user-in-course.md
+  name: Enroll a user in a course and track progress
+  api: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json
+  operations:
+  - GET /Courses
+  - PUT /Course/{Id}/AddUser
+  - GET /Course/{CourseId}/UserProgress/{UserId}

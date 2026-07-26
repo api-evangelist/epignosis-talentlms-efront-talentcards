@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json
+api: eFront API
+format: json
+envelope:
+  description: >-
+    eFront returns a JSON object with an `error` object carrying `code` (mirrors the HTTP
+    status), `message` (human-readable), and nullable `reason`, wrapped alongside the
+    standardResponse schema. Derived from components.responses in the eFront OpenAPI.
+  fields:
+  - error.code
+  - error.message
+  - error.reason
+problems:
+- status: 400
+  ref: '#/components/responses/errorResponse'
+  title: Bad request
+  detail: Not possible to get the requested resource information.
+  example_message: Not possible to get the requested resource information.
+- status: 404
+  ref: '#/components/responses/404NotFound'
+  title: Not found
+  detail: The requested resource was not found.
+  example_message: The requested resource was not found.

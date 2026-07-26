@@ -1,0 +1,187 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json
+note: Candidate MCP tool list derived one-per-operation from the eFront OpenAPI. No official hosted MCP
+  server was found for TalentLMS, eFront, or TalentCards.
+server:
+  name: epignosis-efront
+  transport: stdio
+tools:
+- name: get_user_types
+  description: Returns the list of the available user types.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /user-types
+- name: get_user_type_id
+  description: Returns information about user type with the requested identifier.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /user-type/{id}
+- name: get_training_sessions
+  description: Represents a list of training sessions.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /training-sessions
+- name: get_training_session_id
+  description: Represents a training session.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /training-session/{id}
+- name: get_course_id_training_sessions
+  description: Represents a list of training sessions of the requested course.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /course/{id}/training-sessions
+- name: get_training_session_id_users
+  description: Represents a list of users of the requested training session.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /training-session/{id}/users
+- name: get_plugins
+  description: Returns a list of the available plugins and their information.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Plugins
+- name: get_plugin_pluginname
+  description: Returns a list of the requested plugin and its information.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Plugin/{pluginName}
+- name: create_plugin_pluginname
+  description: Returns the specified plugin's return value only if the plugin has the corresponding callback
+    method implemented.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#POST /Plugin/{pluginName}
+- name: get_autologin_loginname
+  description: Returns the auto-login URL for the requested user.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Autologin/{loginName}
+- name: get_users
+  description: Returns the entire user list.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Users
+- name: get_logout_loginname
+  description: Logouts the requested user.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Logout/{loginName}
+- name: get_branch_id
+  description: Returns information about the branch with the associated Id.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Branch/{Id}
+- name: get_branches
+  description: Returns the branch list.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Branches
+- name: get_category_id
+  description: Returns information about the category with the associated Id.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Category/{Id}
+- name: get_categories
+  description: Returns the category list (tree structured).
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Categories
+- name: get_course_id
+  description: Returns information about the course with the associated Id.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Course/{Id}
+- name: get_course_courseid_userprogress_userid
+  description: Returns information about the progress of the specified user in the specified course.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Course/{CourseId}/UserProgress/{UserId}
+- name: get_courseuserstatus_courseid_userid
+  description: Returns information about the status of a specified user in the specified course.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /CourseUserStatus/{CourseId},{UserId}
+- name: create_courseuserstatus_courseid_userid
+  description: Update the status of the specified user in the specified course
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#POST /CourseUserStatus/{CourseId},{UserId}
+- name: get_courseusertestattempts_courseid_userid
+  description: Returns a list of all the test attempts that the specified user has made in the specified
+    course.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /CourseUserTestAttempts/{CourseId},{UserId}
+- name: get_curriculums
+  description: Returns a list of the available curriculums.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /curriculums
+- name: get_courses
+  description: Returns the complete list of courses.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Courses
+- name: get_course_id_content
+  description: Returns the content IDs for a given course.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Course/{Id}/Content
+- name: get_user_id_catalog
+  description: Returns the course catalog list for a given user.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /User/{Id}/Catalog/
+- name: get_group_id
+  description: Returns information about the group with the associated Id.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Group/{Id}
+- name: get_groups
+  description: Returns the entire group list.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Groups
+- name: get_job_id
+  description: Returns information for a given job.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Job/{Id}
+- name: update_job_id
+  description: Edits the specified job.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /Job/{Id}
+- name: get_jobs
+  description: Returns the entire list of jobs.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Jobs
+- name: get_user_id
+  description: Returns information about the user with the associated Id.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /User/{Id}
+- name: update_user_id
+  description: Edits the specified user.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /User/{Id}
+- name: get_extended_fields_users
+  description: Returns a list of extended fields for users.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /extended-fields/users
+- name: get_users_emailaddress
+  description: Returns a list of users which they have the requested e-mail address along with the courses
+    they are enrolled to.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Users/{eMailAddress}
+- name: get_system_info
+  description: Returns information about the system.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /System/Info
+- name: get_content_id
+  description: Returns information about the content with the associated Id.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /Content/{id}
+- name: get_user_id_jobs
+  description: Returns information about user jobs.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#GET /User/{Id}/Jobs
+- name: create_branch
+  description: Creates a branch with the requested attributes.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#POST /Branch
+- name: create_course
+  description: Creates a course with the requested attributes.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#POST /Course
+- name: create_courseuserstatus
+  description: Update the status of the specified user in the specified course.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#POST /CourseUserStatus
+- name: create_account_status
+  description: Checks if the specified account exists and returns the user id
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#POST /Account/Status
+- name: create_user
+  description: Create user
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#POST /User
+- name: create_course_adduser
+  description: Adds a user to a course
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#POST /Course/AddUser
+- name: create_branch_adduser
+  description: Adds a user to a branch
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#POST /Branch/AddUser
+- name: create_group_adduser
+  description: Adds a user to a group
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#POST /Group/AddUser
+- name: create_job_adduser
+  description: Adds a user to a job
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#POST /Job/AddUser
+- name: create_job
+  description: Create a job
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#POST /Job
+- name: update_branch_id_adduser
+  description: Adds a user to the specified branch.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /Branch/{Id}/AddUser
+- name: update_course_id_adduser
+  description: Adds a user to the specified course.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /Course/{Id}/AddUser
+- name: update_course_id_removeuser
+  description: Removes a user from the specified course.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /Course/{Id}/RemoveUser
+- name: update_curriculum_id_adduser
+  description: Adds a user to the specified curriculum.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /Curriculum/{Id}/AddUser
+- name: update_curriculum_id_removeuser
+  description: Removes a user from the specified curriculum.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /Curriculum/{Id}/RemoveUser
+- name: update_group_id_adduser
+  description: Adds a user to the specified group.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /Group/{Id}/AddUser
+- name: update_group_id_removeuser
+  description: Removes a user from the specified group.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /Group/{Id}/RemoveUser
+- name: update_job_id_adduser
+  description: Adds a user to the specified job.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /Job/{Id}/AddUser
+- name: update_job_id_removeuser
+  description: Removes a user from the specified job.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /Job/{Id}/RemoveUser
+- name: update_user_id_activate
+  description: Activates the specified user.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /User/{Id}/Activate
+- name: update_user_id_deactivate
+  description: Deactivates the specified user.
+  source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /User/{Id}/Deactivate

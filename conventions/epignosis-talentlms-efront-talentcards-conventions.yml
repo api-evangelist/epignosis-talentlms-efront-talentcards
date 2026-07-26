@@ -1,0 +1,56 @@
+generated: '2026-07-19'
+method: searched
+source: https://market.talentlms.com/pages/docs/TalentLMS-API-Documentation.pdf
+description: >-
+  Cross-cutting request/response conventions for the Epignosis LMS REST APIs
+  (TalentLMS and eFront). Both are JSON-over-HTTPS REST APIs authenticated with an API
+  key over HTTP Basic auth.
+authentication:
+  style: http-basic-apikey
+  detail: API key as Basic auth username, blank password; HTTPS required.
+  see: authentication/epignosis-talentlms-efront-talentcards-authentication.yml
+transport:
+  scheme: https-only
+  detail: >-
+    TalentLMS rejects plain HTTP connections from API v4.14+; requests over HTTP return
+    an error.
+serialization:
+  request: form-encoded / path parameters
+  response: application/json
+  detail: >-
+    TalentLMS returns JSON in all responses including errors. Resource identifiers are
+    passed in the path using the pattern id:{value} (e.g. /v1/users/id:{userId}) or
+    email:{value} / username:{value}.
+idempotency:
+  supported: false
+  detail: >-
+    Neither TalentLMS nor eFront documents an idempotency-key header or a request-replay
+    contract. Write operations are not idempotent.
+pagination:
+  supported: false
+  detail: >-
+    The TalentLMS API returns full collections (e.g. /v1/users, /v1/courses) without a
+    documented cursor/offset pagination contract; large tenants are expected to filter
+    by custom field or fetch by id.
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: >-
+    Endpoint version is carried in the path (/v1/...). The published TalentLMS API
+    documentation is at revision "Version 7.0"; eFront's OpenAPI is version 1.0.0
+    (API/v1.0).
+error_envelope:
+  detail: >-
+    TalentLMS errors are JSON with `type` (invalid_request_error | api_error) and
+    `message`. eFront errors are JSON with an `error` object (code, message, reason).
+  see:
+  - errors/epignosis-talentlms-efront-talentcards-talentlms-problem-types.yml
+  - errors/epignosis-talentlms-efront-talentcards-efront-problem-types.yml
+rate_limit_signal:
+  detail: >-
+    TalentLMS enforces per-plan hourly limits plus a 200-calls/5s burst cap; current
+    limits are readable at /v1/ratelimit.
+  see: rate-limits/epignosis-talentlms-efront-talentcards-talentlms-rate-limits.yml
+request_tracing:
+  supported: false
+  detail: No documented request-id / correlation-id response header.

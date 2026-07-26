@@ -1,0 +1,35 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/epignosis
+packages:
+- language: php
+  registry: github
+  name: epignosis/efrontPRO-SDK
+  url: https://github.com/epignosis/efrontPRO-SDK
+  install: git clone https://github.com/epignosis/efrontPRO-SDK
+  official: true
+  status: archived
+  description: >-
+    First-party PHP SDK for the eFront (efrontPRO) REST API. Deprecated in favor of the
+    SwaggerHub OpenAPI definition.
+- language: php
+  registry: github
+  name: epignosis/talentcards-api-wrapper
+  url: https://github.com/epignosis/talentcards-api-wrapper
+  install: git clone https://github.com/epignosis/talentcards-api-wrapper
+  official: true
+  status: archived
+  description: First-party PHP wrapper over the TalentCards REST API.
+- language: php
+  registry: github
+  name: epignosis/talentlms-wordpress
+  url: https://github.com/epignosis/talentlms-wordpress
+  install: git clone https://github.com/epignosis/talentlms-wordpress
+  official: true
+  description: >-
+    First-party TalentLMS WordPress integration plugin (uses the TalentLMS REST API).
+notes: >-
+  TalentLMS also ships a PHP client library documented in the appendix of the official
+  API PDF (TalentLMS::setApiKey / setDomain / setProtocol) but it is distributed via the
+  docs rather than a public package registry. No first-party libraries were found on
+  npm, PyPI, Packagist, NuGet, RubyGems, or crates.io.

@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for eFront API
+  version: 1.0.0
+extends: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-rating: 3
+    x-apievangelist-notes: >-
+      Real first-party OpenAPI 3.0.0 harvested from Epignosis SwaggerHub. Gaps observed:
+      no operationIds on any of the 58 operations (blocks stable agent/SDK binding), no
+      operation summaries, and only 400/404 error responses modeled. Adding unique
+      operationIds and richer response coverage would materially raise the contract
+      score.
+- target: $.info
+  update:
+    x-authentication: http-basic-apikey
+    x-transport: https
+- target: $.servers
+  update:
+    x-production-server: https://ssc.efrontlearning.com/API/v1.0

@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.talentlms.com/security
+standards:
+- id: iso-27001
+  name: ISO/IEC 27001:2022
+  conforms: true
+  evidence: Published on TalentLMS security page.
+- id: iso-9001
+  name: ISO 9001:2015
+  conforms: true
+  evidence: Published on TalentLMS/Epignosis security page.
+- id: gdpr
+  name: GDPR
+  conforms: true
+  evidence: >-
+    GDPR compliant; EU Cloud Code of Conduct verified (ID 2020LVL02SCOPE003).
+- id: csa-star
+  name: CSA STAR Level 1
+  conforms: true
+  evidence: Cloud Security Alliance STAR Level 1 registry entry.
+- id: pci-dss
+  name: PCI DSS
+  conforms: partial
+  evidence: PCI-compliant billing (card transmission/processing); scope limited to payments.
+- id: oauth2
+  conforms: false
+  evidence: APIs use HTTP Basic API-key auth, not OAuth2.
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors are custom JSON envelopes, not application/problem+json.
+- id: openapi-3
+  conforms: true
+  evidence: eFront publishes an OpenAPI 3.0.0 definition on SwaggerHub.
+- id: rest
+  conforms: true
+  evidence: All products expose JSON REST APIs.

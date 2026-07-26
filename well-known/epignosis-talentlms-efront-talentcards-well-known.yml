@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: searched
+description: >-
+  Probed the /.well-known/ discovery surface on the TalentLMS and Epignosis hosts. No
+  well-known documents are published; absence is recorded data.
+hosts:
+- host: https://www.talentlms.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+- host: https://www.epignosishq.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+notes: >-
+  TalentLMS does publish a human-readable vulnerability policy at
+  /vulnerabilitypolicy and a security page at /security, but no machine-readable
+  /.well-known/security.txt (RFC 9116).

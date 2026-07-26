@@ -1,0 +1,17 @@
+generated: '2026-07-19'
+method: searched
+probe: false
+url: https://www.talentlms.com/security
+certifications:
+- ISO/IEC 27001:2022
+- ISO 9001:2015
+- GDPR
+- CSA STAR Level 1
+- EU Cloud Code of Conduct
+detail: >-
+  AES-256 encryption at rest on AWS; PCI-compliant billing; 24/7 monitoring with
+  intrusion detection; Multi-AZ deployments with a 99.9% uptime SLA. EU Cloud CoC
+  verified ID 2020LVL02SCOPE003.
+evidence:
+- source: https://www.talentlms.com/security
+  keywords: [iso 27001, iso 9001, gdpr, csa star, aes-256, penetration testing]
