@@ -1,0 +1,2286 @@
+{
+  "item": [
+    {
+      "id": "fe8cfe28-b393-4cd6-85dd-42e0398bceee",
+      "name": "User",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bde57522-d42f-495e-bde8-02308481f7ef",
+          "name": "Returns the entire user list.",
+          "request": {
+            "name": "Returns the entire user list.",
+            "description": {
+              "content": "Returns the entire user list.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f48b7907-8515-453c-a8ab-fdb987c32693",
+              "name": "A JSON array of user objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 3440,\n      \"user_type_id\": 7143,\n      \"user_type_name\": \"Administrator\",\n      \"active\": 0,\n      \"login\": \"johndoe\",\n      \"name\": \"John\",\n      \"surname\": \"Doe\",\n      \"email\": \"johndoe@example.com\",\n      \"balance\": 2440.689634618388,\n      \"branch\": 4009\n    },\n    {\n      \"id\": 5010,\n      \"user_type_id\": 2856,\n      \"user_type_name\": \"Administrator\",\n      \"active\": 0,\n      \"login\": \"johndoe\",\n      \"name\": \"John\",\n      \"surname\": \"Doe\",\n      \"email\": \"johndoe@example.com\",\n      \"balance\": 5056.774614469049,\n      \"branch\": 9414\n    }\n  ],\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce70ec12-eda6-436b-adb8-4fe042ef9458",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a7a1458-0f2c-4c63-83b3-ee6a3747cfbc",
+          "name": "Logouts the requested user.",
+          "request": {
+            "name": "Logouts the requested user.",
+            "description": {
+              "content": "Logouts the requested user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Logout",
+                ":loginName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loginName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4560f2bb-689b-4ede-a910-4bb4f6114831",
+              "name": "A json array indicating a successful operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Logout",
+                    ":loginName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loginName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94de0c01-bd65-4a87-a88e-94ec7f0be818",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Logout",
+                    ":loginName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loginName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"The requested resource was not found.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d396849-40cd-491e-8325-51e057c22f65",
+          "name": "Returns information about the status of a specified user in the specified course.",
+          "request": {
+            "name": "Returns information about the status of a specified user in the specified course.",
+            "description": {
+              "content": "Returns information about the status of a specified user in the specified course.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CourseUserStatus",
+                "{{CourseId}},{{UserId}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b364eb17-8673-4984-ba8b-c966489b3629",
+              "name": "A JSON array with the requested user progress in the requested course.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CourseUserStatus",
+                    "{{CourseId}},{{UserId}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"from_timestamp\": 1606908264,\n    \"to_timestamp\": 1606908264,\n    \"score\": 62.5,\n    \"status\": \"in_progress\",\n    \"sessions_ID\": 8619\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": false,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "864801ad-47fb-4a91-ac14-86f645eee946",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CourseUserStatus",
+                    "{{CourseId}},{{UserId}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b068c4b8-750c-44ec-bc68-57f289a78f70",
+          "name": "Update the status of the specified user in the specified course",
+          "request": {
+            "name": "Update the status of the specified user in the specified course",
+            "description": {},
+            "url": {
+              "path": [
+                "CourseUserStatus",
+                "{{CourseId}},{{UserId}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "score",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to_timestamp",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c855aabf-b721-4e87-a3ea-0eb0d63ea1b5",
+              "name": "A json array indicating a successful operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CourseUserStatus",
+                    "{{CourseId}},{{UserId}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "score",
+                      "value": "62.5"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status",
+                      "value": "in_progress"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "to_timestamp",
+                      "value": "1606908264"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f8d2234-3af0-40f0-9245-e3ec86f27adf",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CourseUserStatus",
+                    "{{CourseId}},{{UserId}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "score",
+                      "value": "62.5"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status",
+                      "value": "in_progress"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "to_timestamp",
+                      "value": "1606908264"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5dfc06aa-d7a6-4013-83de-684f4e0c2c91",
+          "name": "Returns information about the user with the associated Id.",
+          "request": {
+            "name": "Returns information about the user with the associated Id.",
+            "description": {
+              "content": "Returns information about the user with the associated Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "User",
+                ":Id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "Id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "638d60ab-ba98-44f1-87ac-a244ad7f3005",
+              "name": "A JSON array with the requested user's information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"avatar\": {\n      \"small\": \"string\",\n      \"medium\": \"string\",\n      \"large\": \"string\"\n    },\n    \"email\": \"johndoe@example.com\",\n    \"name\": \"John\",\n    \"surname\": \"Doe\",\n    \"active\": 1,\n    \"login\": \"johndoe\",\n    \"cookie\": \"a:2:{i:0;s:1:\\\\\\\"3\\\\\\\";i:1;s:40:\\\\\\\"a301ca795da9ecd5f0b89f7d74b43ab45eb39586\\\\\\\";}','\",\n    \"cookie_token\": \"2533fc15d4-2c9c7a85d0\",\n    \"balance\": 6933.647643430948,\n    \"branches_ID\": 6737,\n    \"courses\": {\n      \"count\": 5221,\n      \"list\": [\n        {\n          \"id\": 7129,\n          \"formatted_name\": \"string\",\n          \"score\": 62.5,\n          \"is_completed\": true,\n          \"status\": \"in_progress\",\n          \"status_localized\": \"en curso\",\n          \"issued_certificate\": 6730,\n          \"from_timestamp\": 1606908264,\n          \"to_timestamp\": 1606908264\n        },\n        {\n          \"id\": 9171,\n          \"formatted_name\": \"string\",\n          \"score\": 62.5,\n          \"is_completed\": false,\n          \"status\": \"in_progress\",\n          \"status_localized\": \"en curso\",\n          \"issued_certificate\": 5139,\n          \"from_timestamp\": 1606908264,\n          \"to_timestamp\": 1606908264\n        }\n      ]\n    },\n    \"skills\": {\n      \"count\": 9620,\n      \"list\": [\n        {\n          \"description\": \"string\",\n          \"id\": 4103,\n          \"name\": \"string\",\n          \"score\": 62.5,\n          \"specification\": \"string\"\n        },\n        {\n          \"description\": \"string\",\n          \"id\": 6993,\n          \"name\": \"string\",\n          \"score\": 62.5,\n          \"specification\": \"string\"\n        }\n      ]\n    }\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f59561dd-0612-47e1-8a57-87fec0d8e0a8",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"The requested resource was not found.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6694681f-e488-44eb-b1c0-ad80015d0207",
+          "name": "Edits the specified user.\n\n- The Id in the URL, refers to the user.\n",
+          "request": {
+            "name": "Edits the specified user.\n\n- The Id in the URL, refers to the user.\n",
+            "description": {
+              "content": "Edits the specified user.\n\n- The Id in the URL, refers to the user.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "User",
+                ":Id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "Id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "balance",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>"
+                },
+                {
+                  "disabled": false,
+                  "key": "login",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<password>"
+                },
+                {
+                  "disabled": false,
+                  "key": "receive_email",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "surname",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_types_ID",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "82a9de97-9b24-4a5c-93c5-e3d48ecf37cf",
+              "name": "A json array indicating a successful operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "balance",
+                      "value": "<float>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "email",
+                      "value": "johndoe@example.com"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "login",
+                      "value": "johndoe"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "name",
+                      "value": "John"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "password",
+                      "value": "<password>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "receive_email",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "surname",
+                      "value": "Doe"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "user_types_ID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a7dc63b-7ed7-4ad8-b8d2-ec193d471255",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":Id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "balance",
+                      "value": "<float>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "email",
+                      "value": "johndoe@example.com"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "login",
+                      "value": "johndoe"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "name",
+                      "value": "John"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "password",
+                      "value": "<password>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "receive_email",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "surname",
+                      "value": "Doe"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "user_types_ID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71350c80-5437-45c1-93d5-f2c79cf629d8",
+          "name": "Returns a list of users which they have the requested e-mail address along with the courses they are enrolled to.",
+          "request": {
+            "name": "Returns a list of users which they have the requested e-mail address along with the courses they are enrolled to.",
+            "description": {
+              "content": "Returns a list of users which they have the requested e-mail address along with the courses they are enrolled to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Users",
+                ":eMailAddress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<email>",
+                  "key": "eMailAddress",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6cbeca6b-add1-4322-9d85-2cd404f8ff9b",
+              "name": "A JSON array with the requested users.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Users",
+                    ":eMailAddress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<email>",
+                      "key": "eMailAddress",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<integer>\",\n      \"login\": \"johndoe\",\n      \"name\": \"John\",\n      \"surname\": \"Doe\",\n      \"email\": \"johndoe@example.com\",\n      \"balance\": 9356.389689017495,\n      \"branch\": 4058,\n      \"courses\": {\n        \"count\": 9819,\n        \"list\": [\n          {\n            \"id\": \"<integer>\",\n            \"formatted_name\": \"string\",\n            \"score\": 62.5,\n            \"status\": \"in_progress\",\n            \"issued_certificate\": 1576,\n            \"from_timestamp\": 1606908264,\n            \"to_timestamp\": 1606908264\n          },\n          {\n            \"id\": \"<integer>\",\n            \"formatted_name\": \"string\",\n            \"score\": 62.5,\n            \"status\": \"in_progress\",\n            \"issued_certificate\": 9843,\n            \"from_timestamp\": 1606908264,\n            \"to_timestamp\": 1606908264\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"login\": \"johndoe\",\n      \"name\": \"John\",\n      \"surname\": \"Doe\",\n      \"email\": \"johndoe@example.com\",\n      \"balance\": 9377.985747224338,\n      \"branch\": 5614,\n      \"courses\": {\n        \"count\": 1016,\n        \"list\": [\n          {\n            \"id\": \"<integer>\",\n            \"formatted_name\": \"string\",\n            \"score\": 62.5,\n            \"status\": \"in_progress\",\n            \"issued_certificate\": 2089,\n            \"from_timestamp\": 1606908264,\n            \"to_timestamp\": 1606908264\n          },\n          {\n            \"id\": \"<integer>\",\n            \"formatted_name\": \"string\",\n            \"score\": 62.5,\n            \"status\": \"in_progress\",\n            \"issued_certificate\": 4040,\n            \"from_timestamp\": 1606908264,\n            \"to_timestamp\": 1606908264\n          }\n        ]\n      }\n    }\n  ],\n  \"executionDuration\": 0.5281,\n  \"success\": false,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12d7ddf0-ff6e-42e2-82bf-2e73fe0fc04f",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Users",
+                    ":eMailAddress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<email>",
+                      "key": "eMailAddress",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6fb3803-fe04-4559-b30b-cdf0bec6d672",
+          "name": "Update the status of the specified user in the specified course.",
+          "request": {
+            "name": "Update the status of the specified user in the specified course.",
+            "description": {},
+            "url": {
+              "path": [
+                "CourseUserStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "courseId",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "score",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to_timestamp",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4bfca424-be5c-4f4d-9618-2f19c61e58da",
+              "name": "A json array indicating a successful operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CourseUserStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "courseId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "userId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "score",
+                      "value": "62.5"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status",
+                      "value": "in_progress"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "to_timestamp",
+                      "value": "1606908264"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca25cafd-c0b4-4484-b1ec-e9621c48385c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CourseUserStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "courseId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "userId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "score",
+                      "value": "62.5"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status",
+                      "value": "in_progress"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "to_timestamp",
+                      "value": "1606908264"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96edc6f0-b7e9-49c8-b068-0547b16a6b9a",
+          "name": "Create user",
+          "request": {
+            "name": "Create user",
+            "description": {},
+            "url": {
+              "path": [
+                "User"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "login",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<password>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "receive_email",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "surname",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "user_types_ID",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "balance",
+                  "value": "<float>"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "26977e91-f2d7-4c7b-bbe7-8ff98a0f25bb",
+              "name": "A json array indicating a successful operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "johndoe@example.com"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "login",
+                      "value": "johndoe"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "John"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<password>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "receive_email",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "surname",
+                      "value": "Doe"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "user_types_ID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "balance",
+                      "value": "<float>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"<integer>\",\n    \"login\": \"johndoe\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": false,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2a20eb9-a9d6-4273-9404-e68b4ad9a738",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "johndoe@example.com"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "login",
+                      "value": "johndoe"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "John"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<password>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "receive_email",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "surname",
+                      "value": "Doe"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "user_types_ID",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "balance",
+                      "value": "<float>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28a9df91-09d8-41ea-af83-dd0a7e0c5404",
+          "name": "Adds a user to a course",
+          "request": {
+            "name": "Adds a user to a course",
+            "description": {},
+            "url": {
+              "path": [
+                "Course",
+                "AddUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "CourseId",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "UserId",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "76b88aff-1f33-4be1-8a6d-6b66eb0d043f",
+              "name": "A json array indicating a successful operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Course",
+                    "AddUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CourseId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "UserId",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddfce866-c592-4f29-8dcd-1b8b6a20445a",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Course",
+                    "AddUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CourseId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "UserId",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "209e5b7b-97bf-450b-87e6-a4184b603698",
+          "name": "Activates the specified user.\n\n- The Id in the URL, refers to the user.\n",
+          "request": {
+            "name": "Activates the specified user.\n\n- The Id in the URL, refers to the user.\n",
+            "description": {
+              "content": "Activates the specified user.\n\n- The Id in the URL, refers to the user.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "User",
+                ":Id",
+                "Activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "Id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d8a23eee-0aec-49b2-a922-89105c6d8209",
+              "name": "A json array indicating a successful operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":Id",
+                    "Activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4953a58-9876-4776-9710-bba9430c15e4",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":Id",
+                    "Activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a301cbb-db55-4084-a46f-a1f8bebfc2cd",
+          "name": "Deactivates the specified user.\n\n- The Id in the URL, refers to the user.\n",
+          "request": {
+            "name": "Deactivates the specified user.\n\n- The Id in the URL, refers to the user.\n",
+            "description": {
+              "content": "Deactivates the specified user.\n\n- The Id in the URL, refers to the user.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "User",
+                ":Id",
+                "Deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "Id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "862e42cd-33d5-4892-88d3-86ee13ea929e",
+              "name": "A json array indicating a successful operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":Id",
+                    "Deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94987bb9-4768-4881-b68c-2300abb8bcb9",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":Id",
+                    "Deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "CourseId"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "UserId"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "18cc04ee-b30b-4444-b4ad-9ceb93739e09",
+    "name": "Efront Account User API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Efront API Documentation",
+      "type": "text/plain"
+    }
+  }
+}

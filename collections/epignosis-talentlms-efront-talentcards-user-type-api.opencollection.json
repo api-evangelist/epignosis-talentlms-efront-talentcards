@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Efront Account User Type API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Type",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /user-types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/user-types"
+          },
+          "docs": "Returns the list of the available user types."
+        },
+        {
+          "info": {
+            "name": "GET /user-type/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/user-type/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns information about user type with the requested identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,256 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Efront Account User API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Users"
+          },
+          "docs": "Returns the entire user list."
+        },
+        {
+          "info": {
+            "name": "GET /Logout/{loginName}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Logout/:loginName",
+            "params": [
+              {
+                "name": "loginName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Logouts the requested user."
+        },
+        {
+          "info": {
+            "name": "GET /CourseUserStatus/{CourseId},{UserId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/CourseUserStatus/:CourseId,:UserId",
+            "params": [
+              {
+                "name": "CourseId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "UserId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns information about the status of a specified user in the specified course."
+        },
+        {
+          "info": {
+            "name": "Update the status of the specified user in the specified course",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/CourseUserStatus/:CourseId,:UserId",
+            "params": [
+              {
+                "name": "CourseId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "UserId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "score",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "value": ""
+                },
+                {
+                  "name": "to_timestamp",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Update the status of the specified user in the specified course"
+        },
+        {
+          "info": {
+            "name": "GET /User/{Id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/User/:Id",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns information about the user with the associated Id."
+        },
+        {
+          "info": {
+            "name": "PUT /User/{Id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/User/:Id",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Edits the specified user.\n\n- The Id in the URL, refers to the user.\n"
+        },
+        {
+          "info": {
+            "name": "GET /Users/{eMailAddress}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Users/:eMailAddress",
+            "params": [
+              {
+                "name": "eMailAddress",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a list of users which they have the requested e-mail address along with the courses they are enrolled to."
+        },
+        {
+          "info": {
+            "name": "Update the status of the specified user in the specified course.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/CourseUserStatus",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the status of the specified user in the specified course."
+        },
+        {
+          "info": {
+            "name": "Create user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/User",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create user"
+        },
+        {
+          "info": {
+            "name": "Adds a user to a course",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Course/AddUser",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a user to a course"
+        },
+        {
+          "info": {
+            "name": "PUT /User/{Id}/Activate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/User/:Id/Activate",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activates the specified user.\n\n- The Id in the URL, refers to the user.\n"
+        },
+        {
+          "info": {
+            "name": "PUT /User/{Id}/Deactivate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/User/:Id/Deactivate",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deactivates the specified user.\n\n- The Id in the URL, refers to the user.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

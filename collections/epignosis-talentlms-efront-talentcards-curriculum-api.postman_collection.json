@@ -1,0 +1,550 @@
+{
+  "item": [
+    {
+      "id": "4d844912-0fbe-4a92-b29b-75fca6018d76",
+      "name": "Curriculum",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f2fb99c-ae2e-4db7-b01f-216979e4f9e0",
+          "name": "Returns a list of the available curriculums.",
+          "request": {
+            "name": "Returns a list of the available curriculums.",
+            "description": {
+              "content": "Returns a list of the available curriculums.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "curriculums"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e374f711-eca1-4df0-9c84-d4f5d971f9bb",
+              "name": "A JSON array with the curriculums list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "curriculums"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"active\": 0,\n      \"assign_new_users\": 0,\n      \"avatar\": {\n        \"id\": 2927\n      },\n      \"branches\": [\n        {\n          \"id\": 2593,\n          \"formatted_name\": \"Sub-Branch 1\",\n          \"name\": \"branch 1\",\n          \"public_id\": \"2533fc15d4-2c9c7a85d0\"\n        },\n        {\n          \"id\": 6299,\n          \"formatted_name\": \"Sub-Branch 1\",\n          \"name\": \"branch 1\",\n          \"public_id\": \"2533fc15d4-2c9c7a85d0\"\n        }\n      ],\n      \"branches_ID\": 4748,\n      \"category\": {\n        \"id\": 938,\n        \"name\": \"Uncategorized\"\n      },\n      \"certificate\": {\n        \"id\": 6695,\n        \"name\": \"Default template\"\n      },\n      \"courses\": [\n        {\n          \"id\": 9447,\n          \"course_code\": \"CS12\",\n          \"public_id\": \"2533fc15d4-2c9c7a85d0\",\n          \"formatted_name\": \"New curriculum\"\n        },\n        {\n          \"id\": 1853,\n          \"course_code\": \"CS12\",\n          \"public_id\": \"2533fc15d4-2c9c7a85d0\",\n          \"formatted_name\": \"New curriculum\"\n        }\n      ],\n      \"created\": 1606908264,\n      \"description\": {\n        \"html\": \"string\",\n        \"plain_text\": \"string\"\n      },\n      \"exclude_progress\": 0,\n      \"formatted_name\": \"Curriculum 1\",\n      \"id\": 5899,\n      \"name\": \"Curriculum 1\",\n      \"participation\": 5,\n      \"price\": 3426.2388316287306,\n      \"program\": 8980,\n      \"public_id\": \"2533fc15d4-2c9c7a85d0\",\n      \"reset_interval\": {},\n      \"show_catalog\": 0,\n      \"show_main\": 0\n    },\n    {\n      \"active\": 1,\n      \"assign_new_users\": 0,\n      \"avatar\": {\n        \"id\": 2870\n      },\n      \"branches\": [\n        {\n          \"id\": 3007,\n          \"formatted_name\": \"Sub-Branch 1\",\n          \"name\": \"branch 1\",\n          \"public_id\": \"2533fc15d4-2c9c7a85d0\"\n        },\n        {\n          \"id\": 1527,\n          \"formatted_name\": \"Sub-Branch 1\",\n          \"name\": \"branch 1\",\n          \"public_id\": \"2533fc15d4-2c9c7a85d0\"\n        }\n      ],\n      \"branches_ID\": 7896,\n      \"category\": {\n        \"id\": 5282,\n        \"name\": \"Uncategorized\"\n      },\n      \"certificate\": {\n        \"id\": 7670,\n        \"name\": \"Default template\"\n      },\n      \"courses\": [\n        {\n          \"id\": 2337,\n          \"course_code\": \"CS12\",\n          \"public_id\": \"2533fc15d4-2c9c7a85d0\",\n          \"formatted_name\": \"New curriculum\"\n        },\n        {\n          \"id\": 6425,\n          \"course_code\": \"CS12\",\n          \"public_id\": \"2533fc15d4-2c9c7a85d0\",\n          \"formatted_name\": \"New curriculum\"\n        }\n      ],\n      \"created\": 1606908264,\n      \"description\": {\n        \"html\": \"string\",\n        \"plain_text\": \"string\"\n      },\n      \"exclude_progress\": 1,\n      \"formatted_name\": \"Curriculum 1\",\n      \"id\": 8321,\n      \"name\": \"Curriculum 1\",\n      \"participation\": 5,\n      \"price\": 2306.893435543653,\n      \"program\": 9927,\n      \"public_id\": \"2533fc15d4-2c9c7a85d0\",\n      \"reset_interval\": {},\n      \"show_catalog\": 1,\n      \"show_main\": 0\n    }\n  ],\n  \"executionDuration\": 0.5281,\n  \"success\": false,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f04a6256-deb9-48c8-920a-e4052003cf0b",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "curriculums"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "163bbb68-a828-466b-b01b-bf988b8f263d",
+          "name": "Adds a user to the specified curriculum.\n\n- The Id in the URL, refers to the curriculum.\n\n- The Id of the user is defined as a PUT field, in the request body.\n",
+          "request": {
+            "name": "Adds a user to the specified curriculum.\n\n- The Id in the URL, refers to the curriculum.\n\n- The Id of the user is defined as a PUT field, in the request body.\n",
+            "description": {
+              "content": "Adds a user to the specified curriculum.\n\n- The Id in the URL, refers to the curriculum.\n\n- The Id of the user is defined as a PUT field, in the request body.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Curriculum",
+                ":Id",
+                "AddUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "Id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "UserId",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "884c3427-8bd1-491e-9d38-0a1294e94c65",
+              "name": "A json array indicating a successful operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Curriculum",
+                    ":Id",
+                    "AddUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "UserId",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "196e6174-b374-4bb5-8913-0c16b8685f7c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Curriculum",
+                    ":Id",
+                    "AddUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "UserId",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f64f35b-3ece-4dc0-87b4-82f88e5dea91",
+          "name": "Removes a user from the specified curriculum.\n\n- The Id in the URL, refers to the curriculum.\n\n- The Id of the user is defined as a PUT field, in the request body.\n",
+          "request": {
+            "name": "Removes a user from the specified curriculum.\n\n- The Id in the URL, refers to the curriculum.\n\n- The Id of the user is defined as a PUT field, in the request body.\n",
+            "description": {
+              "content": "Removes a user from the specified curriculum.\n\n- The Id in the URL, refers to the curriculum.\n\n- The Id of the user is defined as a PUT field, in the request body.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Curriculum",
+                ":Id",
+                "RemoveUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "Id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "UserId",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "65cba603-875a-4416-aaec-55ae512f07de",
+              "name": "A json array indicating a successful operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Curriculum",
+                    ":Id",
+                    "RemoveUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "UserId",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af37125a-2af6-4779-98cd-0485e2c33ae4",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Curriculum",
+                    ":Id",
+                    "RemoveUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "UserId",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f52e44f7-3522-4351-80ea-03c6d5149b86",
+    "name": "Efront Account Curriculum API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Efront API Documentation",
+      "type": "text/plain"
+    }
+  }
+}

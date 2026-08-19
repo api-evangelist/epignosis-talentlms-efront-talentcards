@@ -1,0 +1,199 @@
+{
+  "item": [
+    {
+      "id": "e503f826-bdb4-4ea8-b1dd-46763a2a7d3c",
+      "name": "Catalog",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c1c99c04-f732-4a0c-a1f5-082481395cbb",
+          "name": "Returns the course catalog list for a given user.",
+          "request": {
+            "name": "Returns the course catalog list for a given user.",
+            "description": {
+              "content": "Returns the course catalog list for a given user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "User",
+                ":Id",
+                "Catalog",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "Id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9127284e-908c-4ca7-b600-5e44ec38ff12",
+              "name": "A JSON array with the requested user's catalog.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":Id",
+                    "Catalog",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 9787,\n      \"name\": \"string\",\n      \"can_edit\": true,\n      \"formatted_name\": \"string\",\n      \"price\": 4926.6980731257345,\n      \"cancellation_fee\": 5475.948281033193,\n      \"track_price\": 1,\n      \"description\": \"string\",\n      \"categories_ID\": 5242,\n      \"category_name\": \"string\",\n      \"avatar\": {\n        \"small\": \"string\",\n        \"medium\": \"string\",\n        \"large\": \"string\"\n      },\n      \"price_string\": \"<span class = \\\"normalPrice\\\">&euro;0 </span>\",\n      \"type\": \"course\",\n      \"course_type\": \"ilt\",\n      \"public_id\": \"2533fc15d4-2c9c7a85d0\",\n      \"has_dependency\": false,\n      \"has_course\": false,\n      \"has_curriculum\": false,\n      \"last_update_on\": 1606908264,\n      \"mean_rate\": 3.68560094114781,\n      \"tags\": {\n        \"ascendingNumber\": \"string\"\n      }\n    },\n    {\n      \"id\": 3412,\n      \"name\": \"string\",\n      \"can_edit\": false,\n      \"formatted_name\": \"string\",\n      \"price\": 8624.016651978714,\n      \"cancellation_fee\": 9935.527270668603,\n      \"track_price\": 0,\n      \"description\": \"string\",\n      \"categories_ID\": 4317,\n      \"category_name\": \"string\",\n      \"avatar\": {\n        \"small\": \"string\",\n        \"medium\": \"string\",\n        \"large\": \"string\"\n      },\n      \"price_string\": \"<span class = \\\"normalPrice\\\">&euro;0 </span>\",\n      \"type\": \"course\",\n      \"course_type\": \"ilt\",\n      \"public_id\": \"2533fc15d4-2c9c7a85d0\",\n      \"has_dependency\": false,\n      \"has_course\": false,\n      \"has_curriculum\": true,\n      \"last_update_on\": 1606908264,\n      \"mean_rate\": 1.87254647702119,\n      \"tags\": {\n        \"ascendingNumber\": \"string\"\n      }\n    }\n  ],\n  \"executionDuration\": 0.5281,\n  \"success\": true,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04ef4e13-2899-42dd-9f68-115c4cf9f5df",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":Id",
+                    "Catalog",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Not possible to get the requested resource information.\",\n    \"reason\": \"string\"\n  },\n  \"executionDuration\": 0.5281,\n  \"success\": false,\n  \"version\": \"1.0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "58b83c9e-eb8e-461d-9b37-ffa172f32a9f",
+    "name": "Efront Account Catalog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Efront API Documentation",
+      "type": "text/plain"
+    }
+  }
+}

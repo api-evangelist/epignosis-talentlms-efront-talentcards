@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Efront Account Training Session API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Training Session",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /training-sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/training-sessions"
+          },
+          "docs": "Represents a list of training sessions."
+        },
+        {
+          "info": {
+            "name": "GET /training-session/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/training-session/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Represents a training session."
+        },
+        {
+          "info": {
+            "name": "GET /course/{id}/training-sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/course/:id/training-sessions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Represents a list of training sessions of the requested course."
+        },
+        {
+          "info": {
+            "name": "GET /training-session/{id}/users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/training-session/:id/users",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Represents a list of users of the requested training session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

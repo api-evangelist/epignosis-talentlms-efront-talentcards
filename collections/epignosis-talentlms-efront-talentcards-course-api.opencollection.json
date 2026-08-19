@@ -1,0 +1,288 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Efront Account Course API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Course",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /Course/{Id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Course/:Id",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns information about the course with the associated Id."
+        },
+        {
+          "info": {
+            "name": "GET /Course/{CourseId}/UserProgress/{UserId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Course/:CourseId/UserProgress/:UserId",
+            "params": [
+              {
+                "name": "CourseId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "UserId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns information about the progress of the specified user in the specified course."
+        },
+        {
+          "info": {
+            "name": "GET /CourseUserStatus/{CourseId},{UserId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/CourseUserStatus/:CourseId,:UserId",
+            "params": [
+              {
+                "name": "CourseId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "UserId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns information about the status of a specified user in the specified course."
+        },
+        {
+          "info": {
+            "name": "Update the status of the specified user in the specified course",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/CourseUserStatus/:CourseId,:UserId",
+            "params": [
+              {
+                "name": "CourseId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "UserId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "score",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "value": ""
+                },
+                {
+                  "name": "to_timestamp",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Update the status of the specified user in the specified course"
+        },
+        {
+          "info": {
+            "name": "GET /CourseUserTestAttempts/{CourseId},{UserId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/CourseUserTestAttempts/:CourseId,:UserId",
+            "params": [
+              {
+                "name": "CourseId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "UserId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a list of all the test attempts that the specified user has made in the specified course."
+        },
+        {
+          "info": {
+            "name": "GET /Courses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Courses"
+          },
+          "docs": "Returns the complete list of courses."
+        },
+        {
+          "info": {
+            "name": "GET /Course/{Id}/Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Course/:Id/Content",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the content IDs for a given course."
+        },
+        {
+          "info": {
+            "name": "Create course",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Course",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a course with the requested attributes."
+        },
+        {
+          "info": {
+            "name": "Update the status of the specified user in the specified course.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/CourseUserStatus",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the status of the specified user in the specified course."
+        },
+        {
+          "info": {
+            "name": "Adds a user to a course",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Course/AddUser",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a user to a course"
+        },
+        {
+          "info": {
+            "name": "PUT /Course/{Id}/AddUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Course/:Id/AddUser",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UserId",
+                  "value": ""
+                },
+                {
+                  "name": "Force",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Adds a user to the specified course.\n\n- The Id in the URL, refers to the course.\n\n- The Id of the user is defined as a PUT field, in the request body.\n"
+        },
+        {
+          "info": {
+            "name": "PUT /Course/{Id}/RemoveUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Course/:Id/RemoveUser",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UserId",
+                  "value": ""
+                },
+                {
+                  "name": "Force",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Removes a user from the specified course.\n\n- The Id in the URL, refers to the course.\n\n- The Id of the user is defined as a PUT field, in the request body.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

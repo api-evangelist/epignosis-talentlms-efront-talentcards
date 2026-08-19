@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Efront Account Plugin API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plugin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /Plugins",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Plugins"
+          },
+          "docs": "Returns a list of the available plugins and their information."
+        },
+        {
+          "info": {
+            "name": "GET /Plugin/{pluginName}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Plugin/:pluginName",
+            "params": [
+              {
+                "name": "pluginName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a list of the requested plugin and its information."
+        },
+        {
+          "info": {
+            "name": "Executes a callback method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Plugin/:pluginName",
+            "params": [
+              {
+                "name": "pluginName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "anyProperty",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Returns the specified plugin's return value only if the plugin has the corresponding callback method implemented."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

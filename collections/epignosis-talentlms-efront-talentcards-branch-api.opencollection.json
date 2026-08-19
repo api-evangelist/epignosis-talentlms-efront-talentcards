@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Efront Account Branch API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Branch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /Branch/{Id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Branch/:Id",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns information about the branch with the associated Id."
+        },
+        {
+          "info": {
+            "name": "GET /Branches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Branches"
+          },
+          "docs": "Returns the branch list."
+        },
+        {
+          "info": {
+            "name": "Create branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Branch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a branch with the requested attributes."
+        },
+        {
+          "info": {
+            "name": "Adds a user to a branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Branch/AddUser",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a user to a branch"
+        },
+        {
+          "info": {
+            "name": "PUT /Branch/{Id}/AddUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Branch/:Id/AddUser",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UserId",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Adds a user to the specified branch.\n\n- The Id in the URL, refers to the branch.\n\n- The Id of the user is defined as a PUT field, in the request body.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

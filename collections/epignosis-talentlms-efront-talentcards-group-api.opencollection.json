@@ -1,0 +1,150 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Efront Account Group API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /Group/{Id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Group/:Id",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns information about the group with the associated Id."
+        },
+        {
+          "info": {
+            "name": "GET /Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Groups"
+          },
+          "docs": "Returns the entire group list."
+        },
+        {
+          "info": {
+            "name": "Adds a user to a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Group/AddUser",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a user to a group"
+        },
+        {
+          "info": {
+            "name": "PUT /Group/{Id}/AddUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Group/:Id/AddUser",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UserId",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Adds a user to the specified group.\n\n- The Id in the URL, refers to the group.\n\n- The Id of the user is defined as a PUT field, in the request body.\n"
+        },
+        {
+          "info": {
+            "name": "PUT /Group/{Id}/RemoveUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Group/:Id/RemoveUser",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UserId",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Removes a user from the specified group.\n\n- The Id in the URL, refers to the group.\n\n- The Id of the user is defined as a PUT field, in the request body.\n"
+        },
+        {
+          "info": {
+            "name": "PUT /Job/{Id}/RemoveUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Job/:Id/RemoveUser",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UserId",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Removes a user from the specified job.\n\n- The Id in the URL, refers to the job.\n\n- The Id of the user is defined as a PUT field, in the request body.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

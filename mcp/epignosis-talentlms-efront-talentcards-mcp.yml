@@ -185,3 +185,9 @@ tools:
 - name: update_user_id_deactivate
   description: Deactivates the specified user.
   source_operation: openapi/epignosis-talentlms-efront-talentcards-efront-openapi-original.json#PUT /User/{Id}/Deactivate
+deployment:
+  mode: none
+  verified: derived
+  tools: 58
+  checked: '2026-08-12'
+  source: catalog MCP census

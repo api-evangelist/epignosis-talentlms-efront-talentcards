@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Efront Account Curriculum API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Curriculum",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /curriculums",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/curriculums"
+          },
+          "docs": "Returns a list of the available curriculums."
+        },
+        {
+          "info": {
+            "name": "PUT /Curriculum/{Id}/AddUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Curriculum/:Id/AddUser",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UserId",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Adds a user to the specified curriculum.\n\n- The Id in the URL, refers to the curriculum.\n\n- The Id of the user is defined as a PUT field, in the request body.\n"
+        },
+        {
+          "info": {
+            "name": "PUT /Curriculum/{Id}/RemoveUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Curriculum/:Id/RemoveUser",
+            "params": [
+              {
+                "name": "Id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UserId",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Removes a user from the specified curriculum.\n\n- The Id in the URL, refers to the curriculum.\n\n- The Id of the user is defined as a PUT field, in the request body.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Efront Account Autologin API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Autologin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /Autologin/{loginName}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/Autologin/:loginName",
+            "params": [
+              {
+                "name": "loginName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the auto-login URL for the requested user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

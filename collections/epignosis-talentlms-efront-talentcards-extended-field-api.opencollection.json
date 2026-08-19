@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Efront Account Extended Field API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Extended Field",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /extended-fields/users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0/extended-fields/users"
+          },
+          "docs": "Returns a list of extended fields for users."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
