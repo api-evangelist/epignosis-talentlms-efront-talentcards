@@ -39,6 +39,16 @@ tags:
 - Learning Management System
 - LMS
 - Training
+- E-Learning
+- Microlearning
+- Corporate Training
+- Software-as-a-Service
+tags_raw:
+- Company
+- Education
+- Learning Management System
+- LMS
+- Training
 - eLearning
 - Microlearning
 - Corporate Training
@@ -53,6 +63,11 @@ apis:
   humanURL: https://www.talentlms.com/features/api-connectors
   baseURL: https://samples.talentlms.com/api/v1/
   tags:
+  - LMS
+  - Training
+  - User
+  - Courses
+  tags_raw:
   - LMS
   - Training
   - Users
@@ -178,6 +193,8 @@ apis:
   humanURL: https://www.talentlms.com/features/api-connectors
   baseURL: https://samples.talentlms.com/api/v1/
   tags:
+  - course
+  tags_raw:
   - Course
   properties:
   - type: OpenAPI
