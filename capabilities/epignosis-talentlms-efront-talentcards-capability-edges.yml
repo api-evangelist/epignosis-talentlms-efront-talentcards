@@ -1,0 +1,25 @@
+slug: epignosis-talentlms-efront-talentcards
+provider: Epignosis (TalentLMS, eFront, TalentCards)
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Training Session
+  spec_file: epignosis-talentlms-efront-talentcards-training-session-api-openapi.yml
+  capability_id: BC-300.40
+  capability_id_l1: BC-300
+  capability_name: Learning & Development Management
+  confidence: 0.7
+  evidence: GET /training-sessions; GET /course/{id}/training-sessions; GET /training-session/{id}/users
+  reason: Operations expose scheduled training sessions belonging to courses and the learners attached
+    to them — delivery/administration of training events. Corporate LMS vendor, so Learning & Development
+    Management is the honest fit.

@@ -380,6 +380,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/epignosis-talentlms-efront-talentcards-capability-edges.yml
+  name: Epignosis (TalentLMS, eFront, TalentCards) Business Capability Map
 - type: Overlay
   url: overlays/epignosis-talentlms-efront-talentcards-efront-overlay.yaml
 - type: Website
