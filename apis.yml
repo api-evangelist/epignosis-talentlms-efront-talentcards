@@ -296,6 +296,8 @@ apis:
   humanURL: https://www.talentlms.com/features/api-connectors
   baseURL: https://samples.talentlms.com/api/v1/
   tags:
+  - Plugins
+  tags_raw:
   - Plugin
   properties:
   - type: OpenAPI
