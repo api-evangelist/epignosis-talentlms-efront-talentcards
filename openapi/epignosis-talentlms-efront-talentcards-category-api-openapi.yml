@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Efront Account Category API
+  title: Efront Category API
   description: Efront API Documentation
 servers:
 - url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
@@ -44,6 +44,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '404':
           $ref: '#/components/responses/404NotFound'
+      summary: Get category by id
+      x-summary-source: derived
+      operationId: getCategoryById
+      x-operation-id-source: derived
   /Categories:
     get:
       tags:
@@ -71,8 +75,58 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get categories
+      x-summary-source: derived
+      operationId: getCategories
+      x-operation-id-source: derived
 components:
+  schemas:
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
   responses:
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
+                    reason:
+                      type:
+                      - string
+                      - 'null'
+            - $ref: '#/components/schemas/standardResponse'
     errorResponse:
       description: Bad request
       content:
@@ -94,54 +148,10 @@ components:
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
                     reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
-    404NotFound:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            allOf:
-            - type: object
-              properties:
-                error:
-                  type: object
-                  properties:
-                    code:
-                      type: integer
-                      description: same as the response code
-                      default: 404
-                    message:
-                      type: string
-                      description: A message that points out that something went wrong.
-                      example: The requested resource was not found.
-                    reason:
-                      type: string
-                      nullable: true
-            - $ref: '#/components/schemas/standardResponse'
-  schemas:
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
   parameters:
     Id:
       name: Id

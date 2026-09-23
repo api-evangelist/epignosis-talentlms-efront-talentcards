@@ -1,22 +1,7 @@
 {
   "provider": "epignosis-talentlms-efront-talentcards",
   "sources": [
-    "epignosis-talentlms-efront-talentcards-account-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-autologin-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-branch-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-catalog-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-category-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-content-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-course-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-curriculum-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-extended-field-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-group-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-job-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-plugin-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-system-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-training-session-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-user-api-openapi.yml",
-    "epignosis-talentlms-efront-talentcards-user-type-api-openapi.yml"
+    "_original/epignosis-talentlms-efront-talentcards-efront-openapi-original.json"
   ],
   "outputs": [
     "epignosis-talentlms-efront-talentcards-account-api-openapi.yml",
@@ -39,6 +24,43 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Account",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Autologin",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Branch",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Catalog",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Category",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Content",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Course",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Curriculum",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Extended Field",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Group",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Job",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Plugin",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: System",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: Training Session",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: User",
+    "epignosis-talentlms-efront-talentcards-efront-openapi-original.json: declared missing tag: User Type",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "epignosis-talentlms-efront-talentcards-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-autologin-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-branch-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-catalog-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-category-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-content-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-course-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-curriculum-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-extended-field-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-group-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-job-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-plugin-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-system-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-training-session-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-user-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "epignosis-talentlms-efront-talentcards-user-type-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

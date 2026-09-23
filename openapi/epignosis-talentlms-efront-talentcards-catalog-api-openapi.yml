@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Efront Account Catalog API
+  title: Efront Catalog API
   description: Efront API Documentation
 servers:
 - url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
@@ -76,24 +76,101 @@ paths:
                           last_update_on:
                             $ref: '#/components/schemas/timestampNullable'
                           mean_rate:
-                            type: number
+                            type:
+                            - number
+                            - 'null'
                             format: float
                             minimum: 1
                             maximum: 5
-                            nullable: true
                           tags:
-                            type: object
+                            type:
+                            - object
+                            - 'null'
                             properties:
                               ascendingNumber:
                                 type: string
                                 description: The name of each tag.
-                            nullable: true
                         additionalProperties:
                           $ref: '#/components/schemas/extended-fields'
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get user by id catalog
+      x-summary-source: derived
+      operationId: getUserByIdCatalog
+      x-operation-id-source: derived
 components:
+  schemas:
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+    price:
+      type:
+      - number
+      - 'null'
+      format: double
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
+    avatar:
+      type:
+      - object
+      - 'null'
+      properties:
+        small:
+          type: string
+          description: The path url of the small size avatar.
+        medium:
+          type: string
+          description: The path url of the medium size avatar.
+        large:
+          type: string
+          description: The path url of the large size avatar.
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
   responses:
     errorResponse:
       description: Bad request
@@ -116,78 +193,10 @@ components:
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
                     reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
-  schemas:
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    price:
-      type: number
-      format: double
-      nullable: true
-    avatar:
-      type: object
-      properties:
-        small:
-          type: string
-          description: The path url of the small size avatar.
-        medium:
-          type: string
-          description: The path url of the medium size avatar.
-        large:
-          type: string
-          description: The path url of the large size avatar.
-      nullable: true
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
-    timestampNullable:
-      type: integer
-      format: int32
-      minimum: 0
-      example: 1606908264
-      nullable: true
-    extended-fields:
-      description: Possible extended profile fields
-      anyOf:
-      - type: string
-        example:
-          tax_id: '503493'
-      - type: array
-        items:
-          type: string
-      - type: boolean
-        example:
-          isOperator: true
-      nullable: true
-    public_id:
-      type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
   parameters:
     Id:
       name: Id

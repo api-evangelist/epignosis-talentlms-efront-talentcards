@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Efront Account Training Session API
+  title: Efront Training Session API
   description: Efront API Documentation
 servers:
 - url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
@@ -55,6 +55,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get training sessions
+      x-summary-source: derived
+      operationId: getTrainingSessions
+      x-operation-id-source: derived
   /training-session/{id}:
     get:
       tags:
@@ -100,6 +104,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get training session by id
+      x-summary-source: derived
+      operationId: getTrainingSessionById
+      x-operation-id-source: derived
   /course/{id}/training-sessions:
     get:
       tags:
@@ -147,6 +155,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get course by id training sessions
+      x-summary-source: derived
+      operationId: getCourseByIdTrainingSessions
+      x-operation-id-source: derived
   /training-session/{id}/users:
     get:
       tags:
@@ -184,23 +196,26 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get training session by id users
+      x-summary-source: derived
+      operationId: getTrainingSessionByIdUsers
+      x-operation-id-source: derived
 components:
   schemas:
+    userName:
+      type: string
+      example: John
     email:
       type: string
       format: email
       example: johndoe@example.com
-    surname:
-      type: string
-      example: Doe
-    id:
-      type: integer
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
       format: int32
-      minimum: 1
-      description: The resource id.
-    userName:
-      type: string
-      example: John
+      minimum: 0
+      example: 1606908264
     standardResponse:
       type: object
       properties:
@@ -217,12 +232,10 @@ components:
           type: number
           format: float
           default: '1.0'
-    timestampNullable:
-      type: integer
-      format: int32
-      minimum: 0
-      example: 1606908264
-      nullable: true
+    login:
+      type: string
+      description: The login username
+      example: johndoe
     extended-fields:
       description: Possible extended profile fields
       anyOf:
@@ -235,11 +248,26 @@ components:
       - type: boolean
         example:
           isOperator: true
-      nullable: true
-    login:
+    surname:
       type: string
-      description: The login username
-      example: johndoe
+      example: Doe
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   responses:
     errorResponse:
       description: Bad request
@@ -262,21 +290,10 @@ components:
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
                     reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
   securitySchemes:
     basicAuth:
       type: http

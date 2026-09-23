@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Efront Account Branch API
+  title: Efront Branch API
   description: Efront API Documentation
 servers:
 - url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
@@ -74,6 +74,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '404':
           $ref: '#/components/responses/404NotFound'
+      summary: Get branch by id
+      x-summary-source: derived
+      operationId: getBranchById
+      x-operation-id-source: derived
   /Branches:
     get:
       tags:
@@ -108,6 +112,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get branches
+      x-summary-source: derived
+      operationId: getBranches
+      x-operation-id-source: derived
   /Branch:
     post:
       tags:
@@ -139,6 +147,8 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      operationId: postBranch
+      x-operation-id-source: derived
   /Branch/AddUser:
     post:
       tags:
@@ -178,6 +188,8 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      operationId: postBranchAddUser
+      x-operation-id-source: derived
   /Branch/{Id}/AddUser:
     put:
       tags:
@@ -188,9 +200,7 @@ paths:
         - The Id in the URL, refers to the branch.
 
 
-        - The Id of the user is defined as a PUT field, in the request body.
-
-        '
+        - The Id of the user is defined as a PUT field, in the request body.'
       parameters:
       - $ref: '#/components/parameters/Id'
       requestBody:
@@ -213,51 +223,16 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Replace branch by id add user
+      x-summary-source: derived
+      operationId: putBranchByIdAddUser
+      x-operation-id-source: derived
 components:
   schemas:
-    email:
+    public_id:
       type: string
-      format: email
-      example: johndoe@example.com
-    surname:
-      type: string
-      example: Doe
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    nullableId:
-      nullable: true
-      type: integer
-      format: int32
-      minimum: 1
-    userName:
-      type: string
-      example: John
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
     createBranch:
       type: object
       properties:
@@ -286,20 +261,61 @@ components:
           example: johndoe@example.com,adamsmith@example.com
       required:
       - name
+    userName:
+      type: string
+      example: John
     timestampNullable:
-      type: integer
+      type:
+      - integer
+      - 'null'
       format: int32
       minimum: 0
       example: 1606908264
-      nullable: true
-    public_id:
+    email:
       type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
+      format: email
+      example: johndoe@example.com
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
     login:
       type: string
       description: The login username
       example: johndoe
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    surname:
+      type: string
+      example: Doe
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
     coursesList:
       type: object
       properties:
@@ -324,6 +340,30 @@ components:
                 type: string
                 description: The description of the course.
   responses:
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
+                    reason:
+                      type:
+                      - string
+                      - 'null'
+            - $ref: '#/components/schemas/standardResponse'
     errorResponse:
       description: Bad request
       content:
@@ -345,31 +385,9 @@ components:
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
                     reason:
-                      type: string
-                      nullable: true
-            - $ref: '#/components/schemas/standardResponse'
-    404NotFound:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            allOf:
-            - type: object
-              properties:
-                error:
-                  type: object
-                  properties:
-                    code:
-                      type: integer
-                      description: same as the response code
-                      default: 404
-                    message:
-                      type: string
-                      description: A message that points out that something went wrong.
-                      example: The requested resource was not found.
-                    reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
   parameters:
     Id:

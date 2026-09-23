@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Efront Account Extended Field API
+  title: Efront Extended Field API
   description: Efront API Documentation
 servers:
 - url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
@@ -49,7 +49,34 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get extended fields users
+      x-summary-source: derived
+      operationId: getExtendedFieldsUsers
+      x-operation-id-source: derived
 components:
+  schemas:
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
   responses:
     errorResponse:
       description: Bad request
@@ -72,31 +99,10 @@ components:
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
                     reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
-  schemas:
-    nullableId:
-      nullable: true
-      type: integer
-      format: int32
-      minimum: 1
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
   securitySchemes:
     basicAuth:
       type: http

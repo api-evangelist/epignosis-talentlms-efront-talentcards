@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Efront Account Content API
+  title: Efront Content API
   description: Efront API Documentation
 servers:
 - url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
@@ -57,7 +57,67 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get content by id
+      x-summary-source: derived
+      operationId: getContentById
+      x-operation-id-source: derived
 components:
+  schemas:
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    timestampNotNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   responses:
     errorResponse:
       description: Bad request
@@ -80,65 +140,10 @@ components:
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
                     reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
-  schemas:
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    nullableId:
-      nullable: true
-      type: integer
-      format: int32
-      minimum: 1
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
-    public_id:
-      type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
-    timestampNotNullable:
-      type: integer
-      format: int32
-      minimum: 0
-      example: 1606908264
-      nullable: false
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
   securitySchemes:
     basicAuth:
       type: http

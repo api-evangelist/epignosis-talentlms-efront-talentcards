@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Efront Account User API
+  title: Efront User API
   description: Efront API Documentation
 servers:
 - url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
@@ -52,15 +52,20 @@ paths:
                             type: number
                             format: float
                           branch:
-                            type: integer
+                            type:
+                            - integer
+                            - 'null'
                             minimum: 1
                             description: The user's branch id.
-                            nullable: true
                         additionalProperties:
                           $ref: '#/components/schemas/extended-fields'
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get users
+      x-summary-source: derived
+      operationId: getUsers
+      x-operation-id-source: derived
   /Logout/{loginName}:
     get:
       tags:
@@ -77,6 +82,10 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '404':
           $ref: '#/components/responses/404NotFound'
+      summary: Get logout by login name
+      x-summary-source: derived
+      operationId: getLogoutByLoginName
+      x-operation-id-source: derived
   /CourseUserStatus/{CourseId},{UserId}:
     get:
       tags:
@@ -111,6 +120,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get course user status by course id},{user id
+      x-summary-source: derived
+      operationId: getCourseUserStatusByCourseId},{UserId
+      x-operation-id-source: derived
     post:
       tags:
       - User
@@ -141,6 +154,8 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      operationId: postCourseUserStatusByCourseId},{UserId
+      x-operation-id-source: derived
   /User/{Id}:
     get:
       tags:
@@ -246,15 +261,17 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '404':
           $ref: '#/components/responses/404NotFound'
+      summary: Get user by id
+      x-summary-source: derived
+      operationId: getUserById
+      x-operation-id-source: derived
     put:
       tags:
       - User
       description: 'Edits the specified user.
 
 
-        - The Id in the URL, refers to the user.
-
-        '
+        - The Id in the URL, refers to the user.'
       parameters:
       - $ref: '#/components/parameters/Id'
       requestBody:
@@ -272,6 +289,10 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Replace user by id
+      x-summary-source: derived
+      operationId: putUserById
+      x-operation-id-source: derived
   /Users/{eMailAddress}:
     get:
       tags:
@@ -340,11 +361,15 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get users by e mail address
+      x-summary-source: derived
+      operationId: getUsersByEMailAddress
+      x-operation-id-source: derived
   /CourseUserStatus:
     post:
       tags:
       - User
-      summary: Update the status of the specified user in the specified course.
+      summary: Update the status of the specified user in the specified course
       requestBody:
         required: true
         content:
@@ -363,6 +388,8 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      operationId: postCourseUserStatus
+      x-operation-id-source: derived
   /User:
     post:
       tags:
@@ -396,6 +423,8 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      operationId: postUser
+      x-operation-id-source: derived
   /Course/AddUser:
     post:
       tags:
@@ -435,6 +464,8 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      operationId: postCourseAddUser
+      x-operation-id-source: derived
   /User/{Id}/Activate:
     put:
       tags:
@@ -442,9 +473,7 @@ paths:
       description: 'Activates the specified user.
 
 
-        - The Id in the URL, refers to the user.
-
-        '
+        - The Id in the URL, refers to the user.'
       parameters:
       - $ref: '#/components/parameters/Id'
       responses:
@@ -456,6 +485,10 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Replace user by id activate
+      x-summary-source: derived
+      operationId: putUserByIdActivate
+      x-operation-id-source: derived
   /User/{Id}/Deactivate:
     put:
       tags:
@@ -463,9 +496,7 @@ paths:
       description: 'Deactivates the specified user.
 
 
-        - The Id in the URL, refers to the user.
-
-        '
+        - The Id in the URL, refers to the user.'
       parameters:
       - $ref: '#/components/parameters/Id'
       responses:
@@ -477,8 +508,16 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Replace user by id deactivate
+      x-summary-source: derived
+      operationId: putUserByIdDeactivate
+      x-operation-id-source: derived
 components:
   schemas:
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
     updateCourseUserStatus:
       type: object
       properties:
@@ -496,6 +535,97 @@ components:
       required:
       - courseId
       - userId
+    userName:
+      type: string
+      example: John
+    login:
+      type: string
+      description: The login username
+      example: johndoe
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
+    surname:
+      type: string
+      example: Doe
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    avatar:
+      type:
+      - object
+      - 'null'
+      properties:
+        small:
+          type: string
+          description: The path url of the small size avatar.
+        medium:
+          type: string
+          description: The path url of the medium size avatar.
+        large:
+          type: string
+          description: The path url of the large size avatar.
+    score:
+      type:
+      - number
+      - 'null'
+      format: double
+      example: 62.5
+    editUser:
+      type: object
+      properties:
+        balance:
+          type: number
+          format: float
+        email:
+          $ref: '#/components/schemas/email'
+        login:
+          $ref: '#/components/schemas/login'
+        name:
+          $ref: '#/components/schemas/userName'
+        password:
+          type: string
+          format: password
+        receive_email:
+          $ref: '#/components/schemas/booleanInteger'
+        surname:
+          $ref: '#/components/schemas/surname'
+        user_types_ID:
+          $ref: '#/components/schemas/id'
+        language:
+          type: string
+      additionalProperties:
+        $ref: '#/components/schemas/extended-fields'
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
     standardResponse:
       type: object
       properties:
@@ -512,16 +642,6 @@ components:
           type: number
           format: float
           default: '1.0'
-    timestampNullable:
-      type: integer
-      format: int32
-      minimum: 0
-      example: 1606908264
-      nullable: true
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
     createUser:
       type: object
       properties:
@@ -555,94 +675,89 @@ components:
       - receive_email
       - surname
       - user_types_ID
-    extended-fields:
-      description: Possible extended profile fields
-      anyOf:
-      - type: string
-        example:
-          tax_id: '503493'
-      - type: array
-        items:
-          type: string
-      - type: boolean
-        example:
-          isOperator: true
-      nullable: true
-    score:
-      type: number
-      format: double
-      nullable: true
-      example: 62.5
-    surname:
-      type: string
-      example: Doe
     id:
       type: integer
       format: int32
       minimum: 1
       description: The resource id.
-    nullableId:
-      nullable: true
-      type: integer
-      format: int32
-      minimum: 1
-    userName:
-      type: string
-      example: John
-    editUser:
-      type: object
-      properties:
-        balance:
-          type: number
-          format: float
-        email:
-          $ref: '#/components/schemas/email'
-        login:
-          $ref: '#/components/schemas/login'
-        name:
-          $ref: '#/components/schemas/userName'
-        password:
-          type: string
-          format: password
-        receive_email:
-          $ref: '#/components/schemas/booleanInteger'
-        surname:
-          $ref: '#/components/schemas/surname'
-        user_types_ID:
-          $ref: '#/components/schemas/id'
-        language:
-          type: string
-      additionalProperties:
-        $ref: '#/components/schemas/extended-fields'
-    login:
-      type: string
-      description: The login username
-      example: johndoe
-    avatar:
-      type: object
-      properties:
-        small:
-          type: string
-          description: The path url of the small size avatar.
-        medium:
-          type: string
-          description: The path url of the medium size avatar.
-        large:
-          type: string
-          description: The path url of the large size avatar.
-      nullable: true
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
-    public_id:
-      type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
+  parameters:
+    UserId:
+      name: UserId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    email:
+      name: eMailAddress
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: email
+        example: johndoe@example.com
+    CourseId:
+      name: CourseId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    loginName:
+      name: loginName
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: username1
   responses:
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
+                    reason:
+                      type:
+                      - string
+                      - 'null'
+            - $ref: '#/components/schemas/standardResponse'
     errorResponse:
       description: Bad request
       content:
@@ -664,85 +779,10 @@ components:
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
                     reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
-    404NotFound:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            allOf:
-            - type: object
-              properties:
-                error:
-                  type: object
-                  properties:
-                    code:
-                      type: integer
-                      description: same as the response code
-                      default: 404
-                    message:
-                      type: string
-                      description: A message that points out that something went wrong.
-                      example: The requested resource was not found.
-                    reason:
-                      type: string
-                      nullable: true
-            - $ref: '#/components/schemas/standardResponse'
-  parameters:
-    Id:
-      name: Id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    CourseId:
-      name: CourseId
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    UserId:
-      name: UserId
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    loginName:
-      name: loginName
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: username1
-    email:
-      name: eMailAddress
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        format: email
-        example: johndoe@example.com
   securitySchemes:
     basicAuth:
       type: http

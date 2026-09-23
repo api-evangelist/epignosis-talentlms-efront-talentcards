@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Efront Account System API
+  title: Efront System API
   description: Efront API Documentation
 servers:
 - url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
@@ -45,21 +45,12 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get system info
+      x-summary-source: derived
+      operationId: getSystemInfo
+      x-operation-id-source: derived
 components:
   schemas:
-    resourceInfo:
-      type: object
-      properties:
-        active:
-          type: integer
-          description: The total number of the requested resource that are active in the system.
-          minimum: 0
-          example: 15
-        inactive:
-          type: integer
-          description: The total number of the requested resource that are inactive in the system.
-          minimum: 0
-          example: 3
     standardResponse:
       type: object
       properties:
@@ -76,6 +67,19 @@ components:
           type: number
           format: float
           default: '1.0'
+    resourceInfo:
+      type: object
+      properties:
+        active:
+          type: integer
+          description: The total number of the requested resource that are active in the system.
+          minimum: 0
+          example: 15
+        inactive:
+          type: integer
+          description: The total number of the requested resource that are inactive in the system.
+          minimum: 0
+          example: 3
   responses:
     errorResponse:
       description: Bad request
@@ -98,8 +102,9 @@ components:
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
                     reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
   securitySchemes:
     basicAuth:

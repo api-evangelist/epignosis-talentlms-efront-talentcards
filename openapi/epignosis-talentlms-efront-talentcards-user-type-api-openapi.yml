@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Efront Account User Type API
+  title: Efront User Type API
   description: Efront API Documentation
 servers:
 - url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
@@ -33,11 +33,16 @@ paths:
                       type: string
                       example: Administrator
                     basic_user_type:
-                      type: integer
+                      type:
+                      - integer
+                      - 'null'
                       minimum: 1
-                      nullable: true
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get user types
+      x-summary-source: derived
+      operationId: getUserTypes
+      x-operation-id-source: derived
   /user-type/{id}:
     get:
       tags:
@@ -59,24 +64,39 @@ paths:
                     type: string
                     example: Administrator
                   basic_user_type:
-                    type: integer
+                    type:
+                    - integer
+                    - 'null'
                     minimum: 1
-                    nullable: true
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get user type by id
+      x-summary-source: derived
+      operationId: getUserTypeById
+      x-operation-id-source: derived
 components:
-  parameters:
+  schemas:
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
     id:
-      name: id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
   responses:
     errorResponse:
       description: Bad request
@@ -99,31 +119,22 @@ components:
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
                     reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
-  schemas:
+  parameters:
     id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
+      name: id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   securitySchemes:
     basicAuth:
       type: http

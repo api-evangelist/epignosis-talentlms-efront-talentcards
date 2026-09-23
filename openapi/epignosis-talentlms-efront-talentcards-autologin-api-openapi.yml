@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Efront Account Autologin API
+  title: Efront Autologin API
   description: Efront API Documentation
 servers:
 - url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
@@ -36,7 +36,28 @@ paths:
           $ref: '#/components/responses/errorResponse'
         '404':
           $ref: '#/components/responses/404NotFound'
+      summary: Get autologin by login name
+      x-summary-source: derived
+      operationId: getAutologinByLoginName
+      x-operation-id-source: derived
 components:
+  schemas:
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
   responses:
     errorResponse:
       description: Bad request
@@ -59,8 +80,9 @@ components:
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
                     reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
     404NotFound:
       description: Bad request
@@ -82,8 +104,9 @@ components:
                       description: A message that points out that something went wrong.
                       example: The requested resource was not found.
                     reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
   parameters:
     loginName:
@@ -95,23 +118,6 @@ components:
       schema:
         type: string
         example: username1
-  schemas:
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
   securitySchemes:
     basicAuth:
       type: http

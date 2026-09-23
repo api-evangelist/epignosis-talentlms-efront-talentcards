@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Efront Account Course API
+  title: Efront Course API
   description: Efront API Documentation
 servers:
 - url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
@@ -136,6 +136,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '404':
           $ref: '#/components/responses/404NotFound'
+      summary: Get course by id
+      x-summary-source: derived
+      operationId: getCourseById
+      x-operation-id-source: derived
   /Course/{CourseId}/UserProgress/{UserId}:
     get:
       tags:
@@ -179,11 +183,16 @@ paths:
                             description: The total time the user spent in the course so far in seconds.
                             example: 9386
                           Attended:
-                            type: integer
-                            nullable: true
+                            type:
+                            - integer
+                            - 'null'
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get course by course id user progress by user id
+      x-summary-source: derived
+      operationId: getCourseByCourseIdUserProgressByUserId
+      x-operation-id-source: derived
   /CourseUserStatus/{CourseId},{UserId}:
     get:
       tags:
@@ -218,6 +227,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get course user status by course id},{user id
+      x-summary-source: derived
+      operationId: getCourseUserStatusByCourseId},{UserId
+      x-operation-id-source: derived
     post:
       tags:
       - Course
@@ -248,6 +261,8 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      operationId: postCourseUserStatusByCourseId},{UserId
+      x-operation-id-source: derived
   /CourseUserTestAttempts/{CourseId},{UserId}:
     get:
       tags:
@@ -290,6 +305,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get course user test attempts by course id},{user id
+      x-summary-source: derived
+      operationId: getCourseUserTestAttemptsByCourseId},{UserId
+      x-operation-id-source: derived
   /Courses:
     get:
       tags:
@@ -318,8 +337,9 @@ paths:
                           categories_ID:
                             $ref: '#/components/schemas/id'
                           course_code:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                             example: CS12
                           course_type:
                             type: string
@@ -346,6 +366,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get courses
+      x-summary-source: derived
+      operationId: getCourses
+      x-operation-id-source: derived
   /Course/{Id}/Content:
     get:
       tags:
@@ -404,6 +428,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '404':
           $ref: '#/components/responses/404NotFound'
+      summary: Get course by id content
+      x-summary-source: derived
+      operationId: getCourseByIdContent
+      x-operation-id-source: derived
   /Course:
     post:
       tags:
@@ -435,11 +463,13 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      operationId: postCourse
+      x-operation-id-source: derived
   /CourseUserStatus:
     post:
       tags:
       - Course
-      summary: Update the status of the specified user in the specified course.
+      summary: Update the status of the specified user in the specified course
       requestBody:
         required: true
         content:
@@ -458,6 +488,8 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      operationId: postCourseUserStatus
+      x-operation-id-source: derived
   /Course/AddUser:
     post:
       tags:
@@ -497,6 +529,8 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      operationId: postCourseAddUser
+      x-operation-id-source: derived
   /Course/{Id}/AddUser:
     put:
       tags:
@@ -507,9 +541,7 @@ paths:
         - The Id in the URL, refers to the course.
 
 
-        - The Id of the user is defined as a PUT field, in the request body.
-
-        '
+        - The Id of the user is defined as a PUT field, in the request body.'
       parameters:
       - $ref: '#/components/parameters/Id'
       requestBody:
@@ -534,6 +566,10 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Replace course by id add user
+      x-summary-source: derived
+      operationId: putCourseByIdAddUser
+      x-operation-id-source: derived
   /Course/{Id}/RemoveUser:
     put:
       tags:
@@ -544,9 +580,7 @@ paths:
         - The Id in the URL, refers to the course.
 
 
-        - The Id of the user is defined as a PUT field, in the request body.
-
-        '
+        - The Id of the user is defined as a PUT field, in the request body.'
       parameters:
       - $ref: '#/components/parameters/Id'
       requestBody:
@@ -571,119 +605,12 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Replace course by id remove user
+      x-summary-source: derived
+      operationId: putCourseByIdRemoveUser
+      x-operation-id-source: derived
 components:
   schemas:
-    updateCourseUserStatus:
-      type: object
-      properties:
-        courseId:
-          $ref: '#/components/schemas/id'
-        userId:
-          $ref: '#/components/schemas/id'
-        score:
-          $ref: '#/components/schemas/score'
-        status:
-          type: string
-          example: in_progress
-        to_timestamp:
-          $ref: '#/components/schemas/timestampNullable'
-      required:
-      - courseId
-      - userId
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    timestampNullable:
-      type: integer
-      format: int32
-      minimum: 0
-      example: 1606908264
-      nullable: true
-    timestampNotNullable:
-      type: integer
-      format: int32
-      minimum: 0
-      example: 1606908264
-      nullable: false
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
-    score:
-      type: number
-      format: double
-      nullable: true
-      example: 62.5
-    extended-fields:
-      description: Possible extended profile fields
-      anyOf:
-      - type: string
-        example:
-          tax_id: '503493'
-      - type: array
-        items:
-          type: string
-      - type: boolean
-        example:
-          isOperator: true
-      nullable: true
-    surname:
-      type: string
-      example: Doe
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    nullableId:
-      nullable: true
-      type: integer
-      format: int32
-      minimum: 1
-    userName:
-      type: string
-      example: John
-    login:
-      type: string
-      description: The login username
-      example: johndoe
-    avatar:
-      type: object
-      properties:
-        small:
-          type: string
-          description: The path url of the small size avatar.
-        medium:
-          type: string
-          description: The path url of the medium size avatar.
-        large:
-          type: string
-          description: The path url of the large size avatar.
-      nullable: true
-    price:
-      type: number
-      format: double
-      nullable: true
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
     createCourse:
       type: object
       properties:
@@ -714,7 +641,179 @@ components:
       type: string
       format: byte
       example: 2533fc15d4-2c9c7a85d0
+    updateCourseUserStatus:
+      type: object
+      properties:
+        courseId:
+          $ref: '#/components/schemas/id'
+        userId:
+          $ref: '#/components/schemas/id'
+        score:
+          $ref: '#/components/schemas/score'
+        status:
+          type: string
+          example: in_progress
+        to_timestamp:
+          $ref: '#/components/schemas/timestampNullable'
+      required:
+      - courseId
+      - userId
+    userName:
+      type: string
+      example: John
+    login:
+      type: string
+      description: The login username
+      example: johndoe
+    price:
+      type:
+      - number
+      - 'null'
+      format: double
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
+    timestampNotNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    avatar:
+      type:
+      - object
+      - 'null'
+      properties:
+        small:
+          type: string
+          description: The path url of the small size avatar.
+        medium:
+          type: string
+          description: The path url of the medium size avatar.
+        large:
+          type: string
+          description: The path url of the large size avatar.
+    score:
+      type:
+      - number
+      - 'null'
+      format: double
+      example: 62.5
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    surname:
+      type: string
+      example: Doe
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+  parameters:
+    UserId:
+      name: UserId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    CourseId:
+      name: CourseId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   responses:
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
+                    reason:
+                      type:
+                      - string
+                      - 'null'
+            - $ref: '#/components/schemas/standardResponse'
     errorResponse:
       description: Bad request
       content:
@@ -736,66 +835,10 @@ components:
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
                     reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
-    404NotFound:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            allOf:
-            - type: object
-              properties:
-                error:
-                  type: object
-                  properties:
-                    code:
-                      type: integer
-                      description: same as the response code
-                      default: 404
-                    message:
-                      type: string
-                      description: A message that points out that something went wrong.
-                      example: The requested resource was not found.
-                    reason:
-                      type: string
-                      nullable: true
-            - $ref: '#/components/schemas/standardResponse'
-  parameters:
-    Id:
-      name: Id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    CourseId:
-      name: CourseId
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    UserId:
-      name: UserId
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
   securitySchemes:
     basicAuth:
       type: http

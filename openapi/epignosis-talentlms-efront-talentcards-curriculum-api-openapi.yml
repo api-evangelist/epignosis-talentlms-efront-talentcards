@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.0
-  title: Efront Account Curriculum API
+  title: Efront Curriculum API
   description: Efront API Documentation
 servers:
 - url: https://virtserver.swaggerhub.com/Epignosis/Efront-API/1.0.0
@@ -36,14 +36,16 @@ paths:
                           assign_new_users:
                             $ref: '#/components/schemas/booleanInteger'
                           avatar:
-                            type: object
-                            nullable: true
+                            type:
+                            - object
+                            - 'null'
                             properties:
                               id:
                                 $ref: '#/components/schemas/id'
                           branches:
-                            nullable: true
-                            type: array
+                            type:
+                            - array
+                            - 'null'
                             items:
                               type: object
                               properties:
@@ -83,8 +85,9 @@ paths:
                                 id:
                                   $ref: '#/components/schemas/id'
                                 course_code:
-                                  type: string
-                                  nullable: true
+                                  type:
+                                  - string
+                                  - 'null'
                                   example: CS12
                                 public_id:
                                   $ref: '#/components/schemas/public_id'
@@ -120,8 +123,7 @@ paths:
                             type: integer
                           public_id:
                             $ref: '#/components/schemas/public_id'
-                          reset_interval:
-                            nullable: true
+                          reset_interval: {}
                           show_catalog:
                             $ref: '#/components/schemas/booleanInteger'
                           show_main:
@@ -129,6 +131,10 @@ paths:
                 - $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Get curriculums
+      x-summary-source: derived
+      operationId: getCurriculums
+      x-operation-id-source: derived
   /Curriculum/{Id}/AddUser:
     put:
       tags:
@@ -139,9 +145,7 @@ paths:
         - The Id in the URL, refers to the curriculum.
 
 
-        - The Id of the user is defined as a PUT field, in the request body.
-
-        '
+        - The Id of the user is defined as a PUT field, in the request body.'
       parameters:
       - $ref: '#/components/parameters/Id'
       requestBody:
@@ -164,6 +168,10 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Replace curriculum by id add user
+      x-summary-source: derived
+      operationId: putCurriculumByIdAddUser
+      x-operation-id-source: derived
   /Curriculum/{Id}/RemoveUser:
     put:
       tags:
@@ -174,9 +182,7 @@ paths:
         - The Id in the URL, refers to the curriculum.
 
 
-        - The Id of the user is defined as a PUT field, in the request body.
-
-        '
+        - The Id of the user is defined as a PUT field, in the request body.'
       parameters:
       - $ref: '#/components/parameters/Id'
       requestBody:
@@ -199,7 +205,62 @@ paths:
                 $ref: '#/components/schemas/standardResponse'
         '400':
           $ref: '#/components/responses/errorResponse'
+      summary: Replace curriculum by id remove user
+      x-summary-source: derived
+      operationId: putCurriculumByIdRemoveUser
+      x-operation-id-source: derived
 components:
+  schemas:
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+    price:
+      type:
+      - number
+      - 'null'
+      format: double
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
   responses:
     errorResponse:
       description: Bad request
@@ -222,57 +283,10 @@ components:
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
                     reason:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
             - $ref: '#/components/schemas/standardResponse'
-  schemas:
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    price:
-      type: number
-      format: double
-      nullable: true
-    nullableId:
-      nullable: true
-      type: integer
-      format: int32
-      minimum: 1
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
-    timestampNullable:
-      type: integer
-      format: int32
-      minimum: 0
-      example: 1606908264
-      nullable: true
-    public_id:
-      type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
   parameters:
     Id:
       name: Id
