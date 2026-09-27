@@ -50,36 +50,6 @@ paths:
       operationId: getSystemInfo
       x-operation-id-source: derived
 components:
-  schemas:
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    resourceInfo:
-      type: object
-      properties:
-        active:
-          type: integer
-          description: The total number of the requested resource that are active in the system.
-          minimum: 0
-          example: 15
-        inactive:
-          type: integer
-          description: The total number of the requested resource that are inactive in the system.
-          minimum: 0
-          example: 3
   responses:
     errorResponse:
       description: Bad request
@@ -106,6 +76,36 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
+  schemas:
+    resourceInfo:
+      type: object
+      properties:
+        active:
+          type: integer
+          description: The total number of the requested resource that are active in the system.
+          minimum: 0
+          example: 15
+        inactive:
+          type: integer
+          description: The total number of the requested resource that are inactive in the system.
+          minimum: 0
+          example: 3
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
   securitySchemes:
     basicAuth:
       type: http

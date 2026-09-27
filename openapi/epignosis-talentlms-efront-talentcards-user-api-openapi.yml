@@ -518,56 +518,9 @@ components:
       type: string
       format: byte
       example: 2533fc15d4-2c9c7a85d0
-    updateCourseUserStatus:
-      type: object
-      properties:
-        courseId:
-          $ref: '#/components/schemas/id'
-        userId:
-          $ref: '#/components/schemas/id'
-        score:
-          $ref: '#/components/schemas/score'
-        status:
-          type: string
-          example: in_progress
-        to_timestamp:
-          $ref: '#/components/schemas/timestampNullable'
-      required:
-      - courseId
-      - userId
     userName:
       type: string
       example: John
-    login:
-      type: string
-      description: The login username
-      example: johndoe
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
-    timestampNullable:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 0
-      example: 1606908264
-    surname:
-      type: string
-      example: Doe
-    extended-fields:
-      description: Possible extended profile fields
-      anyOf:
-      - type: string
-        example:
-          tax_id: '503493'
-      - type: array
-        items:
-          type: string
-      - type: boolean
-        example:
-          isOperator: true
     nullableId:
       type:
       - integer
@@ -588,12 +541,35 @@ components:
         large:
           type: string
           description: The path url of the large size avatar.
+    surname:
+      type: string
+      example: Doe
     score:
       type:
       - number
       - 'null'
       format: double
       example: 62.5
+    login:
+      type: string
+      description: The login username
+      example: johndoe
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
     editUser:
       type: object
       properties:
@@ -619,6 +595,23 @@ components:
           type: string
       additionalProperties:
         $ref: '#/components/schemas/extended-fields'
+    updateCourseUserStatus:
+      type: object
+      properties:
+        courseId:
+          $ref: '#/components/schemas/id'
+        userId:
+          $ref: '#/components/schemas/id'
+        score:
+          $ref: '#/components/schemas/score'
+        status:
+          type: string
+          example: in_progress
+        to_timestamp:
+          $ref: '#/components/schemas/timestampNullable'
+      required:
+      - courseId
+      - userId
     booleanInteger:
       type: integer
       format: int32
@@ -626,22 +619,17 @@ components:
       - 0
       - 1
       minLength: 1
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
     createUser:
       type: object
       properties:
@@ -680,59 +668,18 @@ components:
       format: int32
       minimum: 1
       description: The resource id.
-  parameters:
-    UserId:
-      name: UserId
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    email:
-      name: eMailAddress
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        format: email
-        example: johndoe@example.com
-    CourseId:
-      name: CourseId
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    Id:
-      name: Id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    loginName:
-      name: loginName
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: username1
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
   responses:
     404NotFound:
       description: Bad request
@@ -783,6 +730,59 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    loginName:
+      name: loginName
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: username1
+    email:
+      name: eMailAddress
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: email
+        example: johndoe@example.com
+    CourseId:
+      name: CourseId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    UserId:
+      name: UserId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   securitySchemes:
     basicAuth:
       type: http

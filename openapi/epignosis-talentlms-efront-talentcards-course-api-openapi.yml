@@ -611,6 +611,107 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    timestampNotNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+    userName:
+      type: string
+      example: John
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    avatar:
+      type:
+      - object
+      - 'null'
+      properties:
+        small:
+          type: string
+          description: The path url of the small size avatar.
+        medium:
+          type: string
+          description: The path url of the medium size avatar.
+        large:
+          type: string
+          description: The path url of the large size avatar.
+    surname:
+      type: string
+      example: Doe
+    score:
+      type:
+      - number
+      - 'null'
+      format: double
+      example: 62.5
+    price:
+      type:
+      - number
+      - 'null'
+      format: double
+    login:
+      type: string
+      description: The login username
+      example: johndoe
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    updateCourseUserStatus:
+      type: object
+      properties:
+        courseId:
+          $ref: '#/components/schemas/id'
+        userId:
+          $ref: '#/components/schemas/id'
+        score:
+          $ref: '#/components/schemas/score'
+        status:
+          type: string
+          example: in_progress
+        to_timestamp:
+          $ref: '#/components/schemas/timestampNullable'
+      required:
+      - courseId
+      - userId
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
     createCourse:
       type: object
       properties:
@@ -637,50 +738,11 @@ components:
       required:
       - name
       - category_id
-    public_id:
-      type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
-    updateCourseUserStatus:
-      type: object
-      properties:
-        courseId:
-          $ref: '#/components/schemas/id'
-        userId:
-          $ref: '#/components/schemas/id'
-        score:
-          $ref: '#/components/schemas/score'
-        status:
-          type: string
-          example: in_progress
-        to_timestamp:
-          $ref: '#/components/schemas/timestampNullable'
-      required:
-      - courseId
-      - userId
-    userName:
-      type: string
-      example: John
-    login:
-      type: string
-      description: The login username
-      example: johndoe
-    price:
-      type:
-      - number
-      - 'null'
-      format: double
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
-    timestampNullable:
-      type:
-      - integer
-      - 'null'
+    id:
+      type: integer
       format: int32
-      minimum: 0
-      example: 1606908264
+      minimum: 1
+      description: The resource id.
     extended-fields:
       description: Possible extended profile fields
       anyOf:
@@ -693,71 +755,9 @@ components:
       - type: boolean
         example:
           isOperator: true
-    timestampNotNullable:
-      type: integer
-      format: int32
-      minimum: 0
-      example: 1606908264
-    nullableId:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 1
-    avatar:
-      type:
-      - object
-      - 'null'
-      properties:
-        small:
-          type: string
-          description: The path url of the small size avatar.
-        medium:
-          type: string
-          description: The path url of the medium size avatar.
-        large:
-          type: string
-          description: The path url of the large size avatar.
-    score:
-      type:
-      - number
-      - 'null'
-      format: double
-      example: 62.5
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    surname:
-      type: string
-      example: Doe
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
   parameters:
-    UserId:
-      name: UserId
+    Id:
+      name: Id
       in: path
       required: true
       style: simple
@@ -778,8 +778,8 @@ components:
         type: integer
         format: int32
         example: 1
-    Id:
-      name: Id
+    UserId:
+      name: UserId
       in: path
       required: true
       style: simple

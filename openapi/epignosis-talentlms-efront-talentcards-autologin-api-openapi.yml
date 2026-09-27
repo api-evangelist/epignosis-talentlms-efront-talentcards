@@ -41,23 +41,6 @@ paths:
       operationId: getAutologinByLoginName
       x-operation-id-source: derived
 components:
-  schemas:
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
   responses:
     errorResponse:
       description: Bad request
@@ -118,6 +101,23 @@ components:
       schema:
         type: string
         example: username1
+  schemas:
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
   securitySchemes:
     basicAuth:
       type: http

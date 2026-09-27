@@ -55,6 +55,12 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
     standardResponse:
       type: object
       properties:
@@ -71,12 +77,6 @@ components:
           type: number
           format: float
           default: '1.0'
-    nullableId:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 1
   responses:
     errorResponse:
       description: Bad request

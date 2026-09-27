@@ -76,6 +76,11 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
     standardResponse:
       type: object
       properties:
@@ -92,11 +97,18 @@ components:
           type: number
           format: float
           default: '1.0'
+  parameters:
     id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
+      name: id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   responses:
     errorResponse:
       description: Bad request
@@ -123,18 +135,6 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
   securitySchemes:
     basicAuth:
       type: http

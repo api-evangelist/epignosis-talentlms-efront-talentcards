@@ -55,6 +55,11 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
     standardResponse:
       type: object
       properties:
@@ -75,11 +80,6 @@ components:
       type: string
       description: The login username
       example: johndoe
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
   responses:
     errorResponse:
       description: Bad request
