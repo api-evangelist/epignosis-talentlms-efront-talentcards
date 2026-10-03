@@ -101,6 +101,34 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    avatar:
+      type:
+      - object
+      - 'null'
+      properties:
+        small:
+          type: string
+          description: The path url of the small size avatar.
+        medium:
+          type: string
+          description: The path url of the medium size avatar.
+        large:
+          type: string
+          description: The path url of the large size avatar.
+    price:
+      type:
+      - number
+      - 'null'
+      format: double
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
     booleanInteger:
       type: integer
       format: int32
@@ -108,11 +136,6 @@ components:
       - 0
       - 1
       minLength: 1
-    price:
-      type:
-      - number
-      - 'null'
-      format: double
     standardResponse:
       type: object
       properties:
@@ -129,22 +152,6 @@ components:
           type: number
           format: float
           default: '1.0'
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    timestampNullable:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 0
-      example: 1606908264
-    public_id:
-      type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
     extended-fields:
       description: Possible extended profile fields
       anyOf:
@@ -157,20 +164,13 @@ components:
       - type: boolean
         example:
           isOperator: true
-    avatar:
+    timestampNullable:
       type:
-      - object
+      - integer
       - 'null'
-      properties:
-        small:
-          type: string
-          description: The path url of the small size avatar.
-        medium:
-          type: string
-          description: The path url of the medium size avatar.
-        large:
-          type: string
-          description: The path url of the large size avatar.
+      format: int32
+      minimum: 0
+      example: 1606908264
   parameters:
     Id:
       name: Id

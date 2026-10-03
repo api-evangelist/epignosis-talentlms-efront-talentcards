@@ -611,24 +611,19 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    timestampNotNullable:
+    id:
       type: integer
       format: int32
-      minimum: 0
-      example: 1606908264
-    public_id:
-      type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
+      minimum: 1
+      description: The resource id.
     userName:
       type: string
       example: John
-    nullableId:
+    price:
       type:
-      - integer
+      - number
       - 'null'
-      format: int32
-      minimum: 1
+      format: double
     avatar:
       type:
       - object
@@ -643,40 +638,23 @@ components:
         large:
           type: string
           description: The path url of the large size avatar.
-    surname:
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
+    email:
       type: string
-      example: Doe
+      format: email
+      example: johndoe@example.com
     score:
       type:
       - number
       - 'null'
       format: double
       example: 62.5
-    price:
-      type:
-      - number
-      - 'null'
-      format: double
-    login:
-      type: string
-      description: The login username
-      example: johndoe
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
     updateCourseUserStatus:
       type: object
       properties:
@@ -694,6 +672,10 @@ components:
       required:
       - courseId
       - userId
+    login:
+      type: string
+      description: The login username
+      example: johndoe
     booleanInteger:
       type: integer
       format: int32
@@ -701,17 +683,40 @@ components:
       - 0
       - 1
       minLength: 1
-    timestampNullable:
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
+    nullableId:
       type:
       - integer
       - 'null'
       format: int32
-      minimum: 0
-      example: 1606908264
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
+      minimum: 1
     createCourse:
       type: object
       properties:
@@ -738,37 +743,21 @@ components:
       required:
       - name
       - category_id
-    id:
+    timestampNotNullable:
       type: integer
       format: int32
-      minimum: 1
-      description: The resource id.
-    extended-fields:
-      description: Possible extended profile fields
-      anyOf:
-      - type: string
-        example:
-          tax_id: '503493'
-      - type: array
-        items:
-          type: string
-      - type: boolean
-        example:
-          isOperator: true
+      minimum: 0
+      example: 1606908264
+    surname:
+      type: string
+      example: Doe
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
   parameters:
     Id:
       name: Id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    CourseId:
-      name: CourseId
       in: path
       required: true
       style: simple
@@ -789,31 +778,18 @@ components:
         type: integer
         format: int32
         example: 1
+    CourseId:
+      name: CourseId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   responses:
-    404NotFound:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            allOf:
-            - type: object
-              properties:
-                error:
-                  type: object
-                  properties:
-                    code:
-                      type: integer
-                      description: same as the response code
-                      default: 404
-                    message:
-                      type: string
-                      description: A message that points out that something went wrong.
-                      example: The requested resource was not found.
-                    reason:
-                      type:
-                      - string
-                      - 'null'
-            - $ref: '#/components/schemas/standardResponse'
     errorResponse:
       description: Bad request
       content:
@@ -834,6 +810,30 @@ components:
                       type: string
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
+                    reason:
+                      type:
+                      - string
+                      - 'null'
+            - $ref: '#/components/schemas/standardResponse'
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
                     reason:
                       type:
                       - string

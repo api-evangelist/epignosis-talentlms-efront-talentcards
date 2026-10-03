@@ -514,19 +514,14 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    public_id:
-      type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
     userName:
       type: string
       example: John
-    nullableId:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 1
     avatar:
       type:
       - object
@@ -541,95 +536,6 @@ components:
         large:
           type: string
           description: The path url of the large size avatar.
-    surname:
-      type: string
-      example: Doe
-    score:
-      type:
-      - number
-      - 'null'
-      format: double
-      example: 62.5
-    login:
-      type: string
-      description: The login username
-      example: johndoe
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    editUser:
-      type: object
-      properties:
-        balance:
-          type: number
-          format: float
-        email:
-          $ref: '#/components/schemas/email'
-        login:
-          $ref: '#/components/schemas/login'
-        name:
-          $ref: '#/components/schemas/userName'
-        password:
-          type: string
-          format: password
-        receive_email:
-          $ref: '#/components/schemas/booleanInteger'
-        surname:
-          $ref: '#/components/schemas/surname'
-        user_types_ID:
-          $ref: '#/components/schemas/id'
-        language:
-          type: string
-      additionalProperties:
-        $ref: '#/components/schemas/extended-fields'
-    updateCourseUserStatus:
-      type: object
-      properties:
-        courseId:
-          $ref: '#/components/schemas/id'
-        userId:
-          $ref: '#/components/schemas/id'
-        score:
-          $ref: '#/components/schemas/score'
-        status:
-          type: string
-          example: in_progress
-        to_timestamp:
-          $ref: '#/components/schemas/timestampNullable'
-      required:
-      - courseId
-      - userId
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
-    timestampNullable:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 0
-      example: 1606908264
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
     createUser:
       type: object
       properties:
@@ -663,11 +569,92 @@ components:
       - receive_email
       - surname
       - user_types_ID
-    id:
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    score:
+      type:
+      - number
+      - 'null'
+      format: double
+      example: 62.5
+    login:
+      type: string
+      description: The login username
+      example: johndoe
+    updateCourseUserStatus:
+      type: object
+      properties:
+        courseId:
+          $ref: '#/components/schemas/id'
+        userId:
+          $ref: '#/components/schemas/id'
+        score:
+          $ref: '#/components/schemas/score'
+        status:
+          type: string
+          example: in_progress
+        to_timestamp:
+          $ref: '#/components/schemas/timestampNullable'
+      required:
+      - courseId
+      - userId
+    editUser:
+      type: object
+      properties:
+        balance:
+          type: number
+          format: float
+        email:
+          $ref: '#/components/schemas/email'
+        login:
+          $ref: '#/components/schemas/login'
+        name:
+          $ref: '#/components/schemas/userName'
+        password:
+          type: string
+          format: password
+        receive_email:
+          $ref: '#/components/schemas/booleanInteger'
+        surname:
+          $ref: '#/components/schemas/surname'
+        user_types_ID:
+          $ref: '#/components/schemas/id'
+        language:
+          type: string
+      additionalProperties:
+        $ref: '#/components/schemas/extended-fields'
+    booleanInteger:
       type: integer
       format: int32
-      minimum: 1
-      description: The resource id.
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
     extended-fields:
       description: Possible extended profile fields
       anyOf:
@@ -680,31 +667,73 @@ components:
       - type: boolean
         example:
           isOperator: true
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    surname:
+      type: string
+      example: Doe
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    loginName:
+      name: loginName
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: username1
+    UserId:
+      name: UserId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    CourseId:
+      name: CourseId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    email:
+      name: eMailAddress
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        format: email
+        example: johndoe@example.com
   responses:
-    404NotFound:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            allOf:
-            - type: object
-              properties:
-                error:
-                  type: object
-                  properties:
-                    code:
-                      type: integer
-                      description: same as the response code
-                      default: 404
-                    message:
-                      type: string
-                      description: A message that points out that something went wrong.
-                      example: The requested resource was not found.
-                    reason:
-                      type:
-                      - string
-                      - 'null'
-            - $ref: '#/components/schemas/standardResponse'
     errorResponse:
       description: Bad request
       content:
@@ -730,59 +759,30 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
-  parameters:
-    Id:
-      name: Id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    loginName:
-      name: loginName
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: username1
-    email:
-      name: eMailAddress
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        format: email
-        example: johndoe@example.com
-    CourseId:
-      name: CourseId
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    UserId:
-      name: UserId
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
+                    reason:
+                      type:
+                      - string
+                      - 'null'
+            - $ref: '#/components/schemas/standardResponse'
   securitySchemes:
     basicAuth:
       type: http

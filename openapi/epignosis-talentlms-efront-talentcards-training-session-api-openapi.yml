@@ -201,6 +201,73 @@ paths:
       operationId: getTrainingSessionByIdUsers
       x-operation-id-source: derived
 components:
+  schemas:
+    userName:
+      type: string
+      example: John
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    login:
+      type: string
+      description: The login username
+      example: johndoe
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
+    surname:
+      type: string
+      example: Doe
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   responses:
     errorResponse:
       description: Bad request
@@ -227,73 +294,6 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
-  schemas:
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    surname:
-      type: string
-      example: Doe
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    timestampNullable:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 0
-      example: 1606908264
-    userName:
-      type: string
-      example: John
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
-    extended-fields:
-      description: Possible extended profile fields
-      anyOf:
-      - type: string
-        example:
-          tax_id: '503493'
-      - type: array
-        items:
-          type: string
-      - type: boolean
-        example:
-          isOperator: true
-    login:
-      type: string
-      description: The login username
-      example: johndoe
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
   securitySchemes:
     basicAuth:
       type: http

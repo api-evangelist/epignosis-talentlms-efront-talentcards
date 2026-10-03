@@ -211,11 +211,20 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
     price:
       type:
       - number
       - 'null'
       format: double
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
     booleanInteger:
       type: integer
       format: int32
@@ -239,11 +248,6 @@ components:
           type: number
           format: float
           default: '1.0'
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
     timestampNullable:
       type:
       - integer
@@ -251,10 +255,6 @@ components:
       format: int32
       minimum: 0
       example: 1606908264
-    public_id:
-      type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
     nullableId:
       type:
       - integer

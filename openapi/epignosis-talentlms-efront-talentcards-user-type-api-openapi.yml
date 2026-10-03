@@ -75,6 +75,18 @@ paths:
       operationId: getUserTypeById
       x-operation-id-source: derived
 components:
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   schemas:
     id:
       type: integer
@@ -97,18 +109,6 @@ components:
           type: number
           format: float
           default: '1.0'
-  parameters:
-    id:
-      name: id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
   responses:
     errorResponse:
       description: Bad request

@@ -162,16 +162,6 @@ paths:
       operationId: postPluginByPluginName
       x-operation-id-source: derived
 components:
-  parameters:
-    pluginName:
-      name: pluginName
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: Demo
   responses:
     errorResponse:
       description: Bad request
@@ -215,6 +205,16 @@ components:
           type: number
           format: float
           default: '1.0'
+  parameters:
+    pluginName:
+      name: pluginName
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: Demo
   securitySchemes:
     basicAuth:
       type: http

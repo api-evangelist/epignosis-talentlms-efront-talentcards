@@ -54,32 +54,6 @@ paths:
       operationId: postAccountStatus
       x-operation-id-source: derived
 components:
-  schemas:
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    login:
-      type: string
-      description: The login username
-      example: johndoe
   responses:
     errorResponse:
       description: Bad request
@@ -106,6 +80,32 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
+  schemas:
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    login:
+      type: string
+      description: The login username
+      example: johndoe
   securitySchemes:
     basicAuth:
       type: http

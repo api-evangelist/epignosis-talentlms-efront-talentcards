@@ -235,6 +235,18 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    userName:
+      type: string
+      example: John
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
     booleanInteger:
       type: integer
       format: int32
@@ -258,14 +270,10 @@ components:
           type: number
           format: float
           default: '1.0'
-    surname:
+    login:
       type: string
-      example: Doe
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
+      description: The login username
+      example: johndoe
     timestampNullable:
       type:
       - integer
@@ -273,36 +281,6 @@ components:
       format: int32
       minimum: 0
       example: 1606908264
-    coursesList:
-      type: object
-      properties:
-        count:
-          type: integer
-          minimum: 0
-          description: The total number of the courses included in the requested resource.
-        list:
-          type: array
-          description: An array with information for each course included in the branch.
-          items:
-            type: object
-            properties:
-              courses_ID:
-                $ref: '#/components/schemas/id'
-              name:
-                type: string
-                description: The name of the course.
-              created:
-                $ref: '#/components/schemas/timestampNullable'
-              description:
-                type: string
-                description: The description of the course.
-    userName:
-      type: string
-      example: John
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
     usersList:
       type: object
       properties:
@@ -332,29 +310,63 @@ components:
                 $ref: '#/components/schemas/id'
               branches_ID:
                 $ref: '#/components/schemas/id'
+    surname:
+      type: string
+      example: Doe
+    coursesList:
+      type: object
+      properties:
+        count:
+          type: integer
+          minimum: 0
+          description: The total number of the courses included in the requested resource.
+        list:
+          type: array
+          description: An array with information for each course included in the branch.
+          items:
+            type: object
+            properties:
+              courses_ID:
+                $ref: '#/components/schemas/id'
+              name:
+                type: string
+                description: The name of the course.
+              created:
+                $ref: '#/components/schemas/timestampNullable'
+              description:
+                type: string
+                description: The description of the course.
     nullableId:
       type:
       - integer
       - 'null'
       format: int32
       minimum: 1
-    login:
-      type: string
-      description: The login username
-      example: johndoe
-  parameters:
-    Id:
-      name: Id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
   responses:
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
+                    reason:
+                      type:
+                      - string
+                      - 'null'
+            - $ref: '#/components/schemas/standardResponse'
     errorResponse:
       description: Bad request
       content:
@@ -380,30 +392,18 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
-    404NotFound:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            allOf:
-            - type: object
-              properties:
-                error:
-                  type: object
-                  properties:
-                    code:
-                      type: integer
-                      description: same as the response code
-                      default: 404
-                    message:
-                      type: string
-                      description: A message that points out that something went wrong.
-                      example: The requested resource was not found.
-                    reason:
-                      type:
-                      - string
-                      - 'null'
-            - $ref: '#/components/schemas/standardResponse'
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   securitySchemes:
     basicAuth:
       type: http
