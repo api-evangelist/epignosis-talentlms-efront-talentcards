@@ -611,44 +611,23 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    userName:
-      type: string
-      example: John
     price:
       type:
       - number
       - 'null'
       format: double
-    avatar:
-      type:
-      - object
-      - 'null'
-      properties:
-        small:
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
           type: string
-          description: The path url of the small size avatar.
-        medium:
-          type: string
-          description: The path url of the medium size avatar.
-        large:
-          type: string
-          description: The path url of the large size avatar.
-    timestampNullable:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 0
-      example: 1606908264
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
+      - type: boolean
+        example:
+          isOperator: true
     score:
       type:
       - number
@@ -672,10 +651,11 @@ components:
       required:
       - courseId
       - userId
-    login:
-      type: string
-      description: The login username
-      example: johndoe
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
     booleanInteger:
       type: integer
       format: int32
@@ -683,6 +663,24 @@ components:
       - 0
       - 1
       minLength: 1
+    timestampNotNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
     standardResponse:
       type: object
       properties:
@@ -699,24 +697,6 @@ components:
           type: number
           format: float
           default: '1.0'
-    extended-fields:
-      description: Possible extended profile fields
-      anyOf:
-      - type: string
-        example:
-          tax_id: '503493'
-      - type: array
-        items:
-          type: string
-      - type: boolean
-        example:
-          isOperator: true
-    nullableId:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 1
     createCourse:
       type: object
       properties:
@@ -743,21 +723,41 @@ components:
       required:
       - name
       - category_id
-    timestampNotNullable:
-      type: integer
-      format: int32
-      minimum: 0
-      example: 1606908264
-    surname:
-      type: string
-      example: Doe
     public_id:
       type: string
       format: byte
       example: 2533fc15d4-2c9c7a85d0
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    avatar:
+      type:
+      - object
+      - 'null'
+      properties:
+        small:
+          type: string
+          description: The path url of the small size avatar.
+        medium:
+          type: string
+          description: The path url of the medium size avatar.
+        large:
+          type: string
+          description: The path url of the large size avatar.
+    userName:
+      type: string
+      example: John
+    surname:
+      type: string
+      example: Doe
+    login:
+      type: string
+      description: The login username
+      example: johndoe
   parameters:
-    Id:
-      name: Id
+    UserId:
+      name: UserId
       in: path
       required: true
       style: simple
@@ -767,8 +767,8 @@ components:
         type: integer
         format: int32
         example: 1
-    UserId:
-      name: UserId
+    Id:
+      name: Id
       in: path
       required: true
       style: simple

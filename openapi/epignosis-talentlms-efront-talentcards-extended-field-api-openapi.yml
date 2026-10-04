@@ -81,12 +81,6 @@ components:
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
   schemas:
-    nullableId:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 1
     standardResponse:
       type: object
       properties:
@@ -103,6 +97,12 @@ components:
           type: number
           format: float
           default: '1.0'
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
   securitySchemes:
     basicAuth:
       type: http

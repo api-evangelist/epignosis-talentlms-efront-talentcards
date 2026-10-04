@@ -63,15 +63,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    public_id:
-      type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
     booleanInteger:
       type: integer
       format: int32
@@ -79,6 +70,26 @@ components:
       - 0
       - 1
       minLength: 1
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+    timestampNotNullable:
+      type: integer
+      format: int32
+      minimum: 0
+      example: 1606908264
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
     standardResponse:
       type: object
       properties:
@@ -95,17 +106,6 @@ components:
           type: number
           format: float
           default: '1.0'
-    timestampNotNullable:
-      type: integer
-      format: int32
-      minimum: 0
-      example: 1606908264
-    nullableId:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 1
   parameters:
     id:
       name: id

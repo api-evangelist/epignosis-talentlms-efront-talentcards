@@ -211,11 +211,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
     price:
       type:
       - number
@@ -225,13 +220,6 @@ components:
       type: string
       format: byte
       example: 2533fc15d4-2c9c7a85d0
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
     standardResponse:
       type: object
       properties:
@@ -248,6 +236,17 @@ components:
           type: number
           format: float
           default: '1.0'
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
     timestampNullable:
       type:
       - integer
@@ -255,24 +254,13 @@ components:
       format: int32
       minimum: 0
       example: 1606908264
-    nullableId:
-      type:
-      - integer
-      - 'null'
+    booleanInteger:
+      type: integer
       format: int32
-      minimum: 1
-  parameters:
-    Id:
-      name: Id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
+      enum:
+      - 0
+      - 1
+      minLength: 1
   responses:
     errorResponse:
       description: Bad request
@@ -299,6 +287,18 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   securitySchemes:
     basicAuth:
       type: http

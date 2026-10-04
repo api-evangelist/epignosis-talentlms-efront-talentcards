@@ -101,25 +101,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    avatar:
-      type:
-      - object
-      - 'null'
-      properties:
-        small:
-          type: string
-          description: The path url of the small size avatar.
-        medium:
-          type: string
-          description: The path url of the medium size avatar.
-        large:
-          type: string
-          description: The path url of the large size avatar.
     price:
       type:
       - number
@@ -129,13 +110,18 @@ components:
       type: string
       format: byte
       example: 2533fc15d4-2c9c7a85d0
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
     standardResponse:
       type: object
       properties:
@@ -152,18 +138,25 @@ components:
           type: number
           format: float
           default: '1.0'
-    extended-fields:
-      description: Possible extended profile fields
-      anyOf:
-      - type: string
-        example:
-          tax_id: '503493'
-      - type: array
-        items:
+    avatar:
+      type:
+      - object
+      - 'null'
+      properties:
+        small:
           type: string
-      - type: boolean
-        example:
-          isOperator: true
+          description: The path url of the small size avatar.
+        medium:
+          type: string
+          description: The path url of the medium size avatar.
+        large:
+          type: string
+          description: The path url of the large size avatar.
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
     timestampNullable:
       type:
       - integer
@@ -171,18 +164,13 @@ components:
       format: int32
       minimum: 0
       example: 1606908264
-  parameters:
-    Id:
-      name: Id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
   responses:
     errorResponse:
       description: Bad request
@@ -209,6 +197,18 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   securitySchemes:
     basicAuth:
       type: http

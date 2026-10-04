@@ -264,32 +264,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    userName:
-      type: string
-      example: John
-    public_id:
-      type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
-    createJob:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        job_code:
-          type: string
-        positions:
-          type: integer
-          minimum: 1
-      required:
-      - name
     editJob:
       type: object
       properties:
@@ -302,44 +276,6 @@ components:
         positions:
           type: integer
           minimum: 1
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    login:
-      type: string
-      description: The login username
-      example: johndoe
-    timestampNullable:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 0
-      example: 1606908264
     usersList:
       type: object
       properties:
@@ -369,9 +305,35 @@ components:
                 $ref: '#/components/schemas/id'
               branches_ID:
                 $ref: '#/components/schemas/id'
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
     surname:
       type: string
       example: Doe
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
     coursesList:
       type: object
       properties:
@@ -395,37 +357,51 @@ components:
               description:
                 type: string
                 description: The description of the course.
-    nullableId:
+    userName:
+      type: string
+      example: John
+    createJob:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        job_code:
+          type: string
+        positions:
+          type: integer
+          minimum: 1
+      required:
+      - name
+    timestampNullable:
       type:
       - integer
       - 'null'
       format: int32
-      minimum: 1
+      minimum: 0
+      example: 1606908264
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    login:
+      type: string
+      description: The login username
+      example: johndoe
   responses:
-    404NotFound:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            allOf:
-            - type: object
-              properties:
-                error:
-                  type: object
-                  properties:
-                    code:
-                      type: integer
-                      description: same as the response code
-                      default: 404
-                    message:
-                      type: string
-                      description: A message that points out that something went wrong.
-                      example: The requested resource was not found.
-                    reason:
-                      type:
-                      - string
-                      - 'null'
-            - $ref: '#/components/schemas/standardResponse'
     errorResponse:
       description: Bad request
       content:
@@ -446,6 +422,30 @@ components:
                       type: string
                       description: A message that points out that something went wrong.
                       example: Not possible to get the requested resource information.
+                    reason:
+                      type:
+                      - string
+                      - 'null'
+            - $ref: '#/components/schemas/standardResponse'
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
                     reason:
                       type:
                       - string

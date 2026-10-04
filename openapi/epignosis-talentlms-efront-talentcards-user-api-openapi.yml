@@ -514,28 +514,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    userName:
-      type: string
-      example: John
-    avatar:
-      type:
-      - object
-      - 'null'
-      properties:
-        small:
-          type: string
-          description: The path url of the small size avatar.
-        medium:
-          type: string
-          description: The path url of the medium size avatar.
-        large:
-          type: string
-          description: The path url of the large size avatar.
     createUser:
       type: object
       properties:
@@ -569,27 +547,24 @@ components:
       - receive_email
       - surname
       - user_types_ID
-    timestampNullable:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 0
-      example: 1606908264
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
     score:
       type:
       - number
       - 'null'
       format: double
       example: 62.5
-    login:
-      type: string
-      description: The login username
-      example: johndoe
     updateCourseUserStatus:
       type: object
       properties:
@@ -607,6 +582,69 @@ components:
       required:
       - courseId
       - userId
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    avatar:
+      type:
+      - object
+      - 'null'
+      properties:
+        small:
+          type: string
+          description: The path url of the small size avatar.
+        medium:
+          type: string
+          description: The path url of the medium size avatar.
+        large:
+          type: string
+          description: The path url of the large size avatar.
     editUser:
       type: object
       properties:
@@ -632,57 +670,19 @@ components:
           type: string
       additionalProperties:
         $ref: '#/components/schemas/extended-fields'
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    extended-fields:
-      description: Possible extended profile fields
-      anyOf:
-      - type: string
-        example:
-          tax_id: '503493'
-      - type: array
-        items:
-          type: string
-      - type: boolean
-        example:
-          isOperator: true
-    nullableId:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 1
+    userName:
+      type: string
+      example: John
     surname:
       type: string
       example: Doe
-    public_id:
+    login:
       type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
+      description: The login username
+      example: johndoe
   parameters:
-    Id:
-      name: Id
+    UserId:
+      name: UserId
       in: path
       required: true
       style: simple
@@ -701,19 +701,8 @@ components:
       schema:
         type: string
         example: username1
-    UserId:
-      name: UserId
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    CourseId:
-      name: CourseId
+    Id:
+      name: Id
       in: path
       required: true
       style: simple
@@ -733,6 +722,17 @@ components:
         type: string
         format: email
         example: johndoe@example.com
+    CourseId:
+      name: CourseId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   responses:
     errorResponse:
       description: Bad request

@@ -202,14 +202,40 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    userName:
+    surname:
       type: string
-      example: John
+      example: Doe
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
     id:
       type: integer
       format: int32
       minimum: 1
       description: The resource id.
+    userName:
+      type: string
+      example: John
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
     standardResponse:
       type: object
       properties:
@@ -230,32 +256,6 @@ components:
       type: string
       description: The login username
       example: johndoe
-    extended-fields:
-      description: Possible extended profile fields
-      anyOf:
-      - type: string
-        example:
-          tax_id: '503493'
-      - type: array
-        items:
-          type: string
-      - type: boolean
-        example:
-          isOperator: true
-    timestampNullable:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 0
-      example: 1606908264
-    surname:
-      type: string
-      example: Doe
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
   parameters:
     id:
       name: id

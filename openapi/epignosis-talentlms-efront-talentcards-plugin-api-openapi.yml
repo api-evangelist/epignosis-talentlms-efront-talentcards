@@ -162,6 +162,33 @@ paths:
       operationId: postPluginByPluginName
       x-operation-id-source: derived
 components:
+  parameters:
+    pluginName:
+      name: pluginName
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+        example: Demo
+  schemas:
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
   responses:
     errorResponse:
       description: Bad request
@@ -188,33 +215,6 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
-  schemas:
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-  parameters:
-    pluginName:
-      name: pluginName
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        type: string
-        example: Demo
   securitySchemes:
     basicAuth:
       type: http
