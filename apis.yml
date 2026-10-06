@@ -45,7 +45,7 @@ accessModel:
   method: derived
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-10-06'
 image: https://www.epignosishq.com/favicon.ico
 tags:
 - Company
@@ -384,6 +384,10 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://www.epignosishq.com/category/news/
+  type: Blog
+- url: https://www.epignosishq.com/category/news/feed/
+  type: BlogRSS
 - type: CapabilityMap
   url: capabilities/epignosis-talentlms-efront-talentcards-capability-edges.yml
   name: Epignosis (TalentLMS, eFront, TalentCards) Business Capability Map
