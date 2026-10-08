@@ -384,6 +384,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: RateLimits
+  url: rate-limits/epignosis-talentlms-efront-talentcards-talentlms-rate-limits.yml
 - url: https://www.epignosishq.com/category/news/
   type: Blog
 - url: https://www.epignosishq.com/category/news/feed/
