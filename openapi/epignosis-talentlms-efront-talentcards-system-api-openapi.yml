@@ -50,32 +50,6 @@ paths:
       operationId: getSystemInfo
       x-operation-id-source: derived
 components:
-  responses:
-    errorResponse:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            allOf:
-            - type: object
-              properties:
-                error:
-                  type: object
-                  properties:
-                    code:
-                      type: integer
-                      description: same as the response code
-                      minimum: 400
-                      default: 400
-                    message:
-                      type: string
-                      description: A message that points out that something went wrong.
-                      example: Not possible to get the requested resource information.
-                    reason:
-                      type:
-                      - string
-                      - 'null'
-            - $ref: '#/components/schemas/standardResponse'
   schemas:
     resourceInfo:
       type: object
@@ -106,6 +80,32 @@ components:
           type: number
           format: float
           default: '1.0'
+  responses:
+    errorResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      minimum: 400
+                      default: 400
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: Not possible to get the requested resource information.
+                    reason:
+                      type:
+                      - string
+                      - 'null'
+            - $ref: '#/components/schemas/standardResponse'
   securitySchemes:
     basicAuth:
       type: http

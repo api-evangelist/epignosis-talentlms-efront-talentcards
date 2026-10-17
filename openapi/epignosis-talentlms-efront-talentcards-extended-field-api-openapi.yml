@@ -54,6 +54,29 @@ paths:
       operationId: getExtendedFieldsUsers
       x-operation-id-source: derived
 components:
+  schemas:
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
   responses:
     errorResponse:
       description: Bad request
@@ -80,29 +103,6 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
-  schemas:
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
-    nullableId:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 1
   securitySchemes:
     basicAuth:
       type: http

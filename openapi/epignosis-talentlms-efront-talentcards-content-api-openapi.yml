@@ -79,17 +79,6 @@ components:
       format: int32
       minimum: 0
       example: 1606908264
-    nullableId:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 1
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
     standardResponse:
       type: object
       properties:
@@ -106,18 +95,17 @@ components:
           type: number
           format: float
           default: '1.0'
-  parameters:
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
     id:
-      name: id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
   responses:
     errorResponse:
       description: Bad request
@@ -144,6 +132,18 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   securitySchemes:
     basicAuth:
       type: http

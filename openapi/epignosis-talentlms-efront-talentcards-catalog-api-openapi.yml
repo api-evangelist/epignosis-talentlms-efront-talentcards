@@ -101,27 +101,29 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
+    public_id:
+      type: string
+      format: byte
+      example: 2533fc15d4-2c9c7a85d0
     price:
       type:
       - number
       - 'null'
       format: double
-    public_id:
-      type: string
-      format: byte
-      example: 2533fc15d4-2c9c7a85d0
-    extended-fields:
-      description: Possible extended profile fields
-      anyOf:
-      - type: string
-        example:
-          tax_id: '503493'
-      - type: array
-        items:
-          type: string
-      - type: boolean
-        example:
-          isOperator: true
     standardResponse:
       type: object
       properties:
@@ -152,25 +154,23 @@ components:
         large:
           type: string
           description: The path url of the large size avatar.
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
     id:
       type: integer
       format: int32
       minimum: 1
       description: The resource id.
-    timestampNullable:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 0
-      example: 1606908264
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
   responses:
     errorResponse:
       description: Bad request

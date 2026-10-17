@@ -229,17 +229,53 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    surname:
-      type: string
-      example: Doe
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
+    coursesList:
+      type: object
+      properties:
+        count:
+          type: integer
+          minimum: 0
+          description: The total number of the courses included in the requested resource.
+        list:
+          type: array
+          description: An array with information for each course included in the branch.
+          items:
+            type: object
+            properties:
+              courses_ID:
+                $ref: '#/components/schemas/id'
+              name:
+                type: string
+                description: The name of the course.
+              created:
+                $ref: '#/components/schemas/timestampNullable'
+              description:
+                type: string
+                description: The description of the course.
     public_id:
       type: string
       format: byte
       example: 2533fc15d4-2c9c7a85d0
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
     createBranch:
       type: object
       properties:
@@ -268,6 +304,13 @@ components:
           example: johndoe@example.com,adamsmith@example.com
       required:
       - name
+    surname:
+      type: string
+      example: Doe
+    login:
+      type: string
+      description: The login username
+      example: johndoe
     standardResponse:
       type: object
       properties:
@@ -284,61 +327,18 @@ components:
           type: number
           format: float
           default: '1.0'
-    nullableId:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 1
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    userName:
+      type: string
+      example: John
     id:
       type: integer
       format: int32
       minimum: 1
       description: The resource id.
-    userName:
-      type: string
-      example: John
-    coursesList:
-      type: object
-      properties:
-        count:
-          type: integer
-          minimum: 0
-          description: The total number of the courses included in the requested resource.
-        list:
-          type: array
-          description: An array with information for each course included in the branch.
-          items:
-            type: object
-            properties:
-              courses_ID:
-                $ref: '#/components/schemas/id'
-              name:
-                type: string
-                description: The name of the course.
-              created:
-                $ref: '#/components/schemas/timestampNullable'
-              description:
-                type: string
-                description: The description of the course.
-    timestampNullable:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 0
-      example: 1606908264
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
-    login:
-      type: string
-      description: The login username
-      example: johndoe
   responses:
     errorResponse:
       description: Bad request

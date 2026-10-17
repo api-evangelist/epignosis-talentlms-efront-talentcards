@@ -211,6 +211,20 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
+    timestampNullable:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 0
+      example: 1606908264
     price:
       type:
       - number
@@ -247,20 +261,6 @@ components:
       format: int32
       minimum: 1
       description: The resource id.
-    timestampNullable:
-      type:
-      - integer
-      - 'null'
-      format: int32
-      minimum: 0
-      example: 1606908264
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
   responses:
     errorResponse:
       description: Bad request

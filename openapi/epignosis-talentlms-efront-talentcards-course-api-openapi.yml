@@ -611,29 +611,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    price:
-      type:
-      - number
-      - 'null'
-      format: double
-    extended-fields:
-      description: Possible extended profile fields
-      anyOf:
-      - type: string
-        example:
-          tax_id: '503493'
-      - type: array
-        items:
-          type: string
-      - type: boolean
-        example:
-          isOperator: true
-    score:
-      type:
-      - number
-      - 'null'
-      format: double
-      example: 62.5
     updateCourseUserStatus:
       type: object
       properties:
@@ -651,29 +628,41 @@ components:
       required:
       - courseId
       - userId
-    id:
-      type: integer
-      format: int32
-      minimum: 1
-      description: The resource id.
-    booleanInteger:
-      type: integer
-      format: int32
-      enum:
-      - 0
-      - 1
-      minLength: 1
     timestampNotNullable:
       type: integer
       format: int32
       minimum: 0
       example: 1606908264
-    nullableId:
+    avatar:
       type:
-      - integer
+      - object
       - 'null'
-      format: int32
-      minimum: 1
+      properties:
+        small:
+          type: string
+          description: The path url of the small size avatar.
+        medium:
+          type: string
+          description: The path url of the medium size avatar.
+        large:
+          type: string
+          description: The path url of the large size avatar.
+    email:
+      type: string
+      format: email
+      example: johndoe@example.com
+    extended-fields:
+      description: Possible extended profile fields
+      anyOf:
+      - type: string
+        example:
+          tax_id: '503493'
+      - type: array
+        items:
+          type: string
+      - type: boolean
+        example:
+          isOperator: true
     timestampNullable:
       type:
       - integer
@@ -681,22 +670,23 @@ components:
       format: int32
       minimum: 0
       example: 1606908264
-    standardResponse:
-      type: object
-      properties:
-        executionDuration:
-          type: number
-          format: float
-          example: 0.5281
-        success:
-          type: boolean
-          enum:
-          - true
-          - false
-        version:
-          type: number
-          format: float
-          default: '1.0'
+    userName:
+      type: string
+      example: John
+    surname:
+      type: string
+      example: Doe
+    score:
+      type:
+      - number
+      - 'null'
+      format: double
+      example: 62.5
+    id:
+      type: integer
+      format: int32
+      minimum: 1
+      description: The resource id.
     createCourse:
       type: object
       properties:
@@ -723,73 +713,73 @@ components:
       required:
       - name
       - category_id
+    price:
+      type:
+      - number
+      - 'null'
+      format: double
+    standardResponse:
+      type: object
+      properties:
+        executionDuration:
+          type: number
+          format: float
+          example: 0.5281
+        success:
+          type: boolean
+          enum:
+          - true
+          - false
+        version:
+          type: number
+          format: float
+          default: '1.0'
+    booleanInteger:
+      type: integer
+      format: int32
+      enum:
+      - 0
+      - 1
+      minLength: 1
     public_id:
       type: string
       format: byte
       example: 2533fc15d4-2c9c7a85d0
-    email:
-      type: string
-      format: email
-      example: johndoe@example.com
-    avatar:
-      type:
-      - object
-      - 'null'
-      properties:
-        small:
-          type: string
-          description: The path url of the small size avatar.
-        medium:
-          type: string
-          description: The path url of the medium size avatar.
-        large:
-          type: string
-          description: The path url of the large size avatar.
-    userName:
-      type: string
-      example: John
-    surname:
-      type: string
-      example: Doe
     login:
       type: string
       description: The login username
       example: johndoe
-  parameters:
-    UserId:
-      name: UserId
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    Id:
-      name: Id
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
-    CourseId:
-      name: CourseId
-      in: path
-      required: true
-      style: simple
-      explode: false
-      schema:
-        minimum: 1
-        type: integer
-        format: int32
-        example: 1
+    nullableId:
+      type:
+      - integer
+      - 'null'
+      format: int32
+      minimum: 1
   responses:
+    404NotFound:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+            - type: object
+              properties:
+                error:
+                  type: object
+                  properties:
+                    code:
+                      type: integer
+                      description: same as the response code
+                      default: 404
+                    message:
+                      type: string
+                      description: A message that points out that something went wrong.
+                      example: The requested resource was not found.
+                    reason:
+                      type:
+                      - string
+                      - 'null'
+            - $ref: '#/components/schemas/standardResponse'
     errorResponse:
       description: Bad request
       content:
@@ -815,30 +805,40 @@ components:
                       - string
                       - 'null'
             - $ref: '#/components/schemas/standardResponse'
-    404NotFound:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            allOf:
-            - type: object
-              properties:
-                error:
-                  type: object
-                  properties:
-                    code:
-                      type: integer
-                      description: same as the response code
-                      default: 404
-                    message:
-                      type: string
-                      description: A message that points out that something went wrong.
-                      example: The requested resource was not found.
-                    reason:
-                      type:
-                      - string
-                      - 'null'
-            - $ref: '#/components/schemas/standardResponse'
+  parameters:
+    Id:
+      name: Id
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    UserId:
+      name: UserId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
+    CourseId:
+      name: CourseId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+        format: int32
+        example: 1
   securitySchemes:
     basicAuth:
       type: http
