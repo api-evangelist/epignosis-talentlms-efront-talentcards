@@ -64,6 +64,162 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Epignosis (TalentLMS, eFront, TalentCards) is a company surfaced as a portfolio company of insight-partners and added to the API Evangelist network as a stub for enrichment. Sector: education. This profile is a lead awaiting the enrichment pipeline.
+Epignosis is a learning-technology company serving more than 70,000 organizations worldwide with a family of cloud training products: TalentLMS (an all-in-one LMS for growing businesses), eFront (a flexible enterprise LMS), TalentCards (mobile-first microlearning for deskless workers) and TalentHR. Each product exposes a REST API for managing users, courses, groups, branches, enrollments, and reporting. The TalentLMS API is a JSON REST API scoped to a per-tenant subdomain with API-key HTTP Basic auth and per-plan hourly rate limits; eFront publishes an OpenAPI 3.0 definition on SwaggerHub; TalentCards ships a PHP API wrapper. Epignosis holds ISO/IEC 27001:2022, ISO 9001:2015, CSA STAR Level 1 and is GDPR compliant.
 
-Backed by: insight-partners — https://www.epignosishq.com/
+**Areas:** Company · Education · LMS · Training · E-Learning · Microlearning · Corporate Training · Software-as-a-Service
+
+## Epignosis (TalentLMS, eFront, TalentCards) on APIs.io
+
+Everything profiled for Epignosis (TalentLMS, eFront, TalentCards) is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/epignosis-talentlms-efront-talentcards/](https://apis.io/providers/epignosis-talentlms-efront-talentcards/)** — or go straight to one of the APIs or properties below.
+
+### APIs (17)
+
+- [TalentLMS API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/talentlms-api/) — JSON REST API for TalentLMS, scoped to a per-tenant subdomain (https://{domain}.talentlms.com/api/v1/). Manages users, courses, categories, groups,…
+- [Epignosis (TalentLMS, eFront, TalentCards) Account API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-account-api/) — The Account API from Epignosis (TalentLMS, eFront, TalentCards) — 1 operation(s) for account.
+- [Epignosis (TalentLMS, eFront, TalentCards) Autologin API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-autologin-api/) — The Autologin API from Epignosis (TalentLMS, eFront, TalentCards) — 1 operation(s) for autologin.
+- [Epignosis (TalentLMS, eFront, TalentCards) Branch API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-branch-api/) — The Branch API from Epignosis (TalentLMS, eFront, TalentCards) — 5 operation(s) for branch.
+- [Epignosis (TalentLMS, eFront, TalentCards) Catalog API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-catalog-api/) — The Catalog API from Epignosis (TalentLMS, eFront, TalentCards) — 1 operation(s) for catalog.
+- [Epignosis (TalentLMS, eFront, TalentCards) Category API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-category-api/) — The Category API from Epignosis (TalentLMS, eFront, TalentCards) — 2 operation(s) for category.
+- [Epignosis (TalentLMS, eFront, TalentCards) Content API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-content-api/) — The Content API from Epignosis (TalentLMS, eFront, TalentCards) — 1 operation(s) for content.
+- [Epignosis (TalentLMS, eFront, TalentCards) Course API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-course-api/) — The Course API from Epignosis (TalentLMS, eFront, TalentCards) — 11 operation(s) for course.
+- [Epignosis (TalentLMS, eFront, TalentCards) Curriculum API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-curriculum-api/) — The Curriculum API from Epignosis (TalentLMS, eFront, TalentCards) — 3 operation(s) for curriculum.
+- [Epignosis (TalentLMS, eFront, TalentCards) Extended Field API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-extended-field-api/) — The Extended Field API from Epignosis (TalentLMS, eFront, TalentCards) — 1 operation(s) for extended field.
+- [Epignosis (TalentLMS, eFront, TalentCards) Group API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-group-api/) — The Group API from Epignosis (TalentLMS, eFront, TalentCards) — 6 operation(s) for group.
+- [Epignosis (TalentLMS, eFront, TalentCards) Job API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-job-api/) — The Job API from Epignosis (TalentLMS, eFront, TalentCards) — 6 operation(s) for job.
+- [Epignosis (TalentLMS, eFront, TalentCards) Plugin API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-plugin-api/) — The Plugin API from Epignosis (TalentLMS, eFront, TalentCards) — 2 operation(s) for plugin.
+- [Epignosis (TalentLMS, eFront, TalentCards) System API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-system-api/) — The System API from Epignosis (TalentLMS, eFront, TalentCards) — 1 operation(s) for system.
+- [Epignosis (TalentLMS, eFront, TalentCards) Training Session API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-training-session-api/) — The Training Session API from Epignosis (TalentLMS, eFront, TalentCards) — 4 operation(s) for training session.
+- [Epignosis (TalentLMS, eFront, TalentCards) User API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-user-api/) — The User API from Epignosis (TalentLMS, eFront, TalentCards) — 10 operation(s) for user.
+- [Epignosis (TalentLMS, eFront, TalentCards) User Type API](https://apis.io/apis/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-user-type-api/) — The User Type API from Epignosis (TalentLMS, eFront, TalentCards) — 2 operation(s) for user type.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [epignosis-efront](https://apis.io/servers/epignosis-talentlms-efront-talentcards/epignosis-efront/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Epignosis Talentlms Efront Talentcards Agentic Access](https://apis.io/agentic-access/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-agentic-access/)
+
+#### Collections (16)
+
+Postman and Open Collection request collections.
+
+- [Efront Account API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-account-api/)
+- [Efront Account Autologin API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-autologin-api/)
+- [Efront Account Branch API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-branch-api/)
+- [Efront Account Catalog API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-catalog-api/)
+- [Efront Account Category API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-category-api/)
+- [Efront Account Content API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-content-api/)
+- [Efront Account Course API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-course-api/)
+- [Efront Account Curriculum API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-curriculum-api/)
+- [Efront Account Extended Field API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-extended-field-api/)
+- [Efront Account Group API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-group-api/)
+- [Efront Account Job API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-job-api/)
+- [Efront Account Plugin API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-plugin-api/)
+- [Efront Account System API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-system-api/)
+- [Efront Account Training Session API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-training-session-api/)
+- [Efront Account User API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-user-api/)
+- [Efront Account User Type API](https://apis.io/collections/epignosis-talentlms-efront-talentcards/open-epignosis-talentlms-efront-talentcards-user-type-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Epignosis Talentlms Efront Talentcards Efront Overlay](https://apis.io/overlays/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-efront-overlay/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Epignosis Talentlms Efront Talentcards Authentication](https://apis.io/security/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-authentication/)
+- [Epignosis Talentlms Efront Talentcards Domain Security](https://apis.io/security/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-domain-security/)
+- [Epignosis Talentlms Efront Talentcards Trust Center](https://apis.io/security/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-trust-center/)
+- [Epignosis Talentlms Efront Talentcards Vulnerability Disclosure](https://apis.io/security/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-vulnerability-disclosure/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Epignosis Talentlms Efront Talentcards Talentlms Rate Limits](https://apis.io/rate-limits/epignosis-talentlms-efront-talentcards/epignosis-talentlms-efront-talentcards-talentlms-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.epignosishq.com/)
+- [Documentation](https://market.talentlms.com/pages/docs/TalentLMS-API-Documentation.pdf)
+- [API reference](https://app.swaggerhub.com/apis/Epignosis/Efront-API/1.0.0)
+- [Pricing](https://www.talentlms.com/pricing)
+- [Sign up](https://www.talentlms.com/create)
+- [Support](https://help.talentlms.com/)
+- [Blog](https://www.epignosishq.com/category/news/)
+- [Security](https://www.talentlms.com/vulnerabilitypolicy)
+- [Compliance](https://www.talentlms.com/security)
+- [Trust centre](https://www.talentlms.com/security)
+- [Terms of service](https://www.talentlms.com/terms)
+- [Privacy policy](https://www.talentlms.com/privacy)
+- [GitHub](https://github.com/epignosis)
+- [Status](https://status.talentlms.com)
+
+## API Evangelist rating
+
+**Kin Score 47.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 49.4 |
+| Contract governance | 18.2 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 41.1 |
+| Access clarity | 60.5 |
+
+**Agent readiness 28.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | mostly |
+
+**Regulatory alignment 35.3** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/epignosis-talentlms-efront-talentcards/](https://apis.io/providers/epignosis-talentlms-efront-talentcards/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Epignosis (TalentLMS, eFront, TalentCards): the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/epignosis-talentlms-efront-talentcards/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
